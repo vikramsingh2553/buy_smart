@@ -1,3 +1,4 @@
+import 'package:buy_smart/product/ui/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,12 +10,12 @@ class StartingHomeScreen extends StatefulWidget {
 }
 
 class _StartingHomeScreenState extends State<StartingHomeScreen> {
-  List<Widget> screens = [
-    Container(),
-    Container(),
-    Container(),
-    Container(),
-    Container(),
+  final List<Widget> screens = [
+    const HomeScreen(),
+    const Center(child: Text('Explore Screen')),
+    const Center(child: Text('Cart Screen')),
+    const Center(child: Text('Favourite Screen')),
+    const Center(child: Text('Account Screen')),
   ];
   int currentTab = 0;
 
@@ -32,6 +33,8 @@ class _StartingHomeScreenState extends State<StartingHomeScreen> {
             currentTab = index;
           });
         },
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.shopify),
