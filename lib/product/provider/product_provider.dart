@@ -26,4 +26,8 @@ class ProductProvider with ChangeNotifier {
       notifyListeners();
     }
   }
+  void incrementCount(ProductModel product) {
+    product.clickCount++;
+    notifyListeners();
+  }
 }

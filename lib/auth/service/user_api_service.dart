@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as http;
 
-import '../../shared/api_endpoint.dart';
+import '../../product/shared/api_endpoints.dart';
 import '../model/user_model.dart';
 
 class UserApiService {
