@@ -1,17 +1,11 @@
+import 'package:buy_smart/auth/ui/starting_home_screen.dart';
+import 'package:buy_smart/product/provider/product_provider.dart';
+import 'package:buy_smart/product/ui/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'auth/provider/user_provider.dart';
-import 'auth/ui/welcome_screen.dart';
 
 void main() {
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => UserProvider()),
-      ],
-      child: const MyApp(),
-    ),
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -19,12 +13,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Buy Smart',
-      theme: ThemeData(
-        primarySwatch: Colors.cyan,
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) {
+            return ProductProvider();
+          },),
+        ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: HomeScreen(),
+        debugShowCheckedModeBanner: false,
       ),
-      home: const WelcomeScreen(),
     );
   }
 }
