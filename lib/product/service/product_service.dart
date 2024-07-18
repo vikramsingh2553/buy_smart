@@ -13,10 +13,8 @@ class ProductService {
     );
 
     if (response.statusCode == 200) {
-      final data = json.decode(response.body);
-      List<ProductModel> products = (data['products'] as List)
-          .map((item) => ProductModel.fromJson(item))
-          .toList();
+      final List<dynamic> data = json.decode(response.body);
+      List<ProductModel> products = data.map((item) => ProductModel.fromJson(item)).toList();
       return products;
     } else {
       throw Exception('Failed to load products');
