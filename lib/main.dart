@@ -1,6 +1,6 @@
-import 'package:buy_smart/auth/ui/starting_home_screen.dart';
+import 'package:buy_smart/category/provider/category_provider.dart';
 import 'package:buy_smart/product/provider/product_provider.dart';
-import 'package:buy_smart/product/ui/home_screen.dart';
+import 'package:buy_smart/product/ui/explore_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +18,9 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (context) {
             return ProductProvider();
           },),
+          ChangeNotifierProvider(create: (context) {
+            return CategoryProvider();
+          },)
         ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -25,7 +28,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: HomeScreen(),
+        home: ExploreScreen(),
         debugShowCheckedModeBanner: false,
       ),
     );
