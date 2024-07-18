@@ -1,3 +1,4 @@
+import 'package:buy_smart/product/model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:buy_smart/product/provider/product_provider.dart';
@@ -10,6 +11,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<ProductProvider>(context, listen: false).fetchProducts();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.all(16.0),
             child: SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const ListTile(
                     contentPadding: EdgeInsets.only(left: 86),
@@ -56,55 +65,72 @@ class _HomeScreenState extends State<HomeScreen> {
                       hintText: 'Search for products...',
                     ),
                   ),
-                  const ListTile(
-                    title: Text('Special Offers'),
-                    trailing: Text(
-                      'See All',
-                      style: TextStyle(color: Colors.green),
-                    ),
+                  const SizedBox(height: 16),
+                  const Text(
+                    'Exclusive Offer',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: productProvider.products.map((product) {
-                        return Padding(
-                          padding: const EdgeInsets.only(right: 16.0),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.4,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade300),
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: Column(
-                              children: [
-                                Image.network(
-                                  product.imageUrl,
-                                  width: 72,
-                                  height: 80,
-                                ),
-                                ListTile(
-                                  title: Text(product.title),
-                                  subtitle: Text(product.subtitle),
-                                ),
-                                ListTile(
-                                  title: Text(product.price),
-                                  trailing: const Icon(
-                                    Icons.add_box_rounded,
-                                    color: Colors.green,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      }).toList(),
+                  const SizedBox(height: 8),
+                  _buildProductList(productProvider.products),
+                  const SizedBox(height: 16),
+                  const Text(
+                    'Best Selling',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 8),
+                  _buildProductList(productProvider.products),
+                  const SizedBox(height: 16),
+                  const Text(
+                    'Groceries',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 8),
+                  _buildProductList(productProvider.products),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildProductList(List<ProductModel> products) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: products.map((product) {
+          return Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.4,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey.shade300),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Column(
+                children: [
+                  // Image.network(
+                  //   product.imageUrl,
+                  //   width: 72,
+                  //   height: 80,
+                  // ),
+                  ListTile(
+                    title: Text(product.name),
+                    subtitle: Text(product.description),
+                  ),
+                  ListTile(
+                    title: Text('\$${product.price}'),
+                    trailing: const Icon(
+                      Icons.add_box_rounded,
+                      color: Colors.green,
                     ),
                   ),
                 ],
               ),
             ),
           );
-        },
+        }).toList(),
       ),
     );
   }
