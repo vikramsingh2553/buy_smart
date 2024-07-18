@@ -3,12 +3,15 @@ class ProductModel {
   final String name;
   final String description;
   final int price;
+  late final int clickCount;
 
-  ProductModel({
+  ProductModel(
+  {
     required this.id,
     required this.name,
     required this.description,
     required this.price,
+    this.clickCount = 0,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
@@ -19,4 +22,5 @@ class ProductModel {
       price: json['price'],
     );
   }
+
 }

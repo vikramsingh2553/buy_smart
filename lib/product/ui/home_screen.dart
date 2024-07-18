@@ -96,10 +96,13 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildProductList(List<ProductModel> products) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: products.map((product) {
+    return SizedBox(
+      height: 200, // Adjust the height as necessary
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: products.length,
+        itemBuilder: (context, index) {
+          final product = products[index];
           return Padding(
             padding: const EdgeInsets.only(right: 16.0),
             child: Container(
@@ -110,6 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: Column(
                 children: [
+                  // Uncomment and use the below line if you have product images
                   // Image.network(
                   //   product.imageUrl,
                   //   width: 72,
@@ -121,16 +125,28 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   ListTile(
                     title: Text('\$${product.price}'),
-                    trailing: const Icon(
-                      Icons.add_box_rounded,
-                      color: Colors.green,
+                    trailing: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon: const Icon(
+                            Icons.add_box_rounded,
+                            color: Colors.green,
+                          ),
+                          onPressed: () {
+                            Provider.of<ProductProvider>(context, listen: false)
+                                .incrementCount(product);
+                          },
+                        ),
+                        Text(product.clickCount.toString()),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
           );
-        }).toList(),
+        },
       ),
     );
   }
