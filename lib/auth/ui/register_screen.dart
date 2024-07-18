@@ -15,14 +15,17 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   void register() async {
     final String username = usernameController.text;
     final String password = passwordController.text;
     final String confirmPassword = confirmPasswordController.text;
 
-    if (username.isNotEmpty && password.isNotEmpty && password == confirmPassword) {
+    if (username.isNotEmpty &&
+        password.isNotEmpty &&
+        password == confirmPassword) {
       final user = UserModel(username: username, password: password);
       final userProvider = Provider.of<UserProvider>(context, listen: false);
       final success = await userProvider.register(user);
@@ -135,20 +138,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       const SizedBox(height: 16),
                       const Text(
                         'Username',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       TextField(
                         controller: usernameController,
                         decoration: const InputDecoration(
                           hintText: 'Enter your username',
                           border: OutlineInputBorder(),
-                          contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          contentPadding:
+                              EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         ),
                       ),
                       const SizedBox(height: 16),
                       const Text(
                         'Password',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       TextField(
                         controller: passwordController,
@@ -156,13 +162,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         decoration: const InputDecoration(
                           hintText: 'Enter your password',
                           border: OutlineInputBorder(),
-                          contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          contentPadding:
+                              EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         ),
                       ),
                       const SizedBox(height: 16),
                       const Text(
                         'Confirm Password',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       TextField(
                         controller: confirmPasswordController,
@@ -170,7 +178,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         decoration: const InputDecoration(
                           hintText: 'Confirm your password',
                           border: OutlineInputBorder(),
-                          contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          contentPadding:
+                              EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -178,21 +187,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         child: isLoading
                             ? const CircularProgressIndicator()
                             : ElevatedButton(
-                          onPressed: register,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.cyan,
-                            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
-                            textStyle: const TextStyle(fontSize: 16),
-                          ),
-                          child: const Text(
-                            'Register',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
+                                onPressed: register,
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.cyan,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 40, vertical: 16),
+                                  textStyle: const TextStyle(fontSize: 16),
+                                ),
+                                child: const Text(
+                                  'Register',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
                       ),
                       const SizedBox(height: 16),
                       Center(
@@ -213,8 +223,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       const SizedBox(height: 16),
                       Center(
                         child: TextButton(
-                          onPressed: () {
-                          },
+                          onPressed: () {},
                           child: const Text(
                             'Forgot Password?',
                             style: TextStyle(color: Colors.cyan, fontSize: 16),
