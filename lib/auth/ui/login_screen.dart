@@ -2,6 +2,7 @@ import 'package:buy_smart/auth/ui/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../product/ui/home_screen.dart';
 import '../model/user_model.dart';
 import '../provider/user_provider.dart';
 
@@ -27,10 +28,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
       if (success) {
         print('Login successful');
-        // Navigator.pushReplacement(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => HomeScreen()),
-        // );
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+        );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Login failed')),
@@ -161,7 +162,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: isLoading
                             ? const CircularProgressIndicator()
                             : ElevatedButton(
-                                onPressed: login,
+                                onPressed: (){
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                                  );
+                                },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.cyan,
                                   padding: const EdgeInsets.symmetric(
