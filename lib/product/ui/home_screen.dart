@@ -120,12 +120,16 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildProductList(List<ProductModel> products) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: products.map((product) {
+    return SizedBox(
+      height: 200, // Adjust the height as necessary
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: products.length,
+        itemBuilder: (context, index) {
+          final product = products[index];
           return Padding(
             padding: const EdgeInsets.only(right: 16.0),
+
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -154,6 +158,43 @@ class _HomeScreenState extends State<HomeScreen> {
                         title: Text(product.name),
                         subtitle: Text(product.description),
                       ),
+
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.4,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey.shade300),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Column(
+                children: [
+                  // Uncomment and use the below line if you have product images
+                  // Image.network(
+                  //   product.imageUrl,
+                  //   width: 72,
+                  //   height: 80,
+                  // ),
+                  ListTile(
+                    title: Text(product.name),
+                    subtitle: Text(product.description),
+                  ),
+                  ListTile(
+                    title: Text('\$${product.price}'),
+                    trailing: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon: const Icon(
+                            Icons.add_box_rounded,
+                            color: Colors.green,
+                          ),
+                          onPressed: () {
+                            Provider.of<ProductProvider>(context, listen: false)
+                                .incrementCount(product);
+                          },
+                        ),
+                        Text(product.clickCount.toString()),
+                      ],
+
                     ),
                     Container(
                       padding: const EdgeInsets.all(8.0),
@@ -179,7 +220,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           );
-        }).toList(),
+        },
       ),
     );
   }

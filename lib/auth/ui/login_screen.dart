@@ -2,6 +2,7 @@ import 'package:buy_smart/auth/ui/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../product/ui/home_screen.dart';
 import '../model/user_model.dart';
 import '../provider/user_provider.dart';
 
@@ -27,10 +28,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
       if (success) {
         print('Login successful');
-        // Navigator.pushReplacement(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => HomeScreen()),
-        // );
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+        );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Login failed')),
@@ -38,7 +39,8 @@ class _LoginScreenState extends State<LoginScreen> {
       }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please enter both username and password')),
+        const SnackBar(
+            content: Text('Please enter both username and password')),
       );
     }
   }
@@ -80,12 +82,10 @@ class _LoginScreenState extends State<LoginScreen> {
               Icons.info_outline,
               color: Colors.white,
             ),
-            onPressed: () {
-            },
+            onPressed: () {},
           ),
         ],
       ),
-
       body: Center(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
@@ -129,20 +129,23 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 16),
                       const Text(
                         'Username',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       TextField(
                         controller: usernameController,
                         decoration: const InputDecoration(
                           hintText: 'Enter your username',
                           border: OutlineInputBorder(),
-                          contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          contentPadding:
+                              EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         ),
                       ),
                       const SizedBox(height: 16),
                       const Text(
                         'Password',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       TextField(
                         controller: passwordController,
@@ -150,7 +153,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         decoration: const InputDecoration(
                           hintText: 'Enter your password',
                           border: OutlineInputBorder(),
-                          contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          contentPadding:
+                              EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -158,21 +162,29 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: isLoading
                             ? const CircularProgressIndicator()
                             : ElevatedButton(
-                          onPressed: login,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.cyan,
-                            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
-                            textStyle: const TextStyle(fontSize: 16),
-                          ),
-                          child: const Text(
-                            'Login',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
+                                onPressed:
+                                //login,
+                                    (){
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                                  );
+                               },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.cyan,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 40, vertical: 16),
+                                  textStyle: const TextStyle(fontSize: 16),
+                                ),
+                                child: const Text(
+                                  'Login',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
                       ),
                       const SizedBox(height: 16),
                       Center(
@@ -180,10 +192,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           onPressed: () {
                             Navigator.push(
                                 context,
-                            MaterialPageRoute(
-                              builder: (context) => RegisterScreen(),
-                            )
-                            );
+                                MaterialPageRoute(
+                                  builder: (context) => RegisterScreen(),
+                                ));
                           },
                           child: const Text(
                             "Don't have an account? Register",
