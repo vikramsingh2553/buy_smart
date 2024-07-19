@@ -1,3 +1,4 @@
+import 'package:buy_smart/cart/provider/cart_provider.dart';
 import 'package:buy_smart/category/provider/category_provider.dart';
 import 'package:buy_smart/product/provider/product_provider.dart';
 import 'package:buy_smart/product/ui/home_screen.dart';
@@ -20,6 +21,9 @@ class MyApp extends StatelessWidget {
           },),
           ChangeNotifierProvider(create: (context) {
             return CategoryProvider();
+          },),
+          ChangeNotifierProvider(create: (context) {
+            return CartProvider();
           },)
         ],
       child: MaterialApp(
