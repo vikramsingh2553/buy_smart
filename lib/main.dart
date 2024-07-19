@@ -1,5 +1,6 @@
 import 'package:buy_smart/auth/ui/welcome_screen.dart';
 import 'package:buy_smart/product/provider/product_provider.dart';
+import 'package:buy_smart/product/ui/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'auth/provider/user_provider.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.cyan,
         ),
-        home: WelcomeScreen(),
+        home: ProfileScreen(),
       ),
     );
   }
