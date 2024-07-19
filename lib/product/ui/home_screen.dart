@@ -1,7 +1,10 @@
-import 'package:buy_smart/product/model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:buy_smart/product/model/product_model.dart';
 import 'package:buy_smart/product/provider/product_provider.dart';
+import 'package:buy_smart/cart/provider/cart_provider.dart';
+import 'package:buy_smart/cart/ui/cart_screen.dart';
+import 'package:buy_smart/product/ui/product_detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -30,6 +33,27 @@ class _HomeScreenState extends State<HomeScreen> {
             fontWeight: FontWeight.bold,
           ),
         ),
+        actions: [
+          Consumer<CartProvider>(
+            builder: (context, cartProvider, child) {
+              return Padding(
+                padding: const EdgeInsets.only(right: 16.0),
+                child: Row(
+                  children: [
+                    GestureDetector( onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const CartScreen()),
+                      );
+                    },
+                        child: const Icon(Icons.shopping_cart)),
+                    Text(cartProvider.cartItems.length.toString()),
+                  ],
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: Consumer<ProductProvider>(
         builder: (context, productProvider, child) {
@@ -105,6 +129,36 @@ class _HomeScreenState extends State<HomeScreen> {
           final product = products[index];
           return Padding(
             padding: const EdgeInsets.only(right: 16.0),
+
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProductDetailScreen(product: product),
+                  ),
+                );
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.4,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey.shade300),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Column(
+                  children: [
+                    // Image.network(
+                    //   product.imageUrl,
+                    //   width: 72,
+                    //   height: 80,
+                    // ),
+                    Container(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ListTile(
+                        title: Text(product.name),
+                        subtitle: Text(product.description),
+                      ),
+
             child: Container(
               width: MediaQuery.of(context).size.width * 0.4,
               decoration: BoxDecoration(
@@ -140,9 +194,29 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Text(product.clickCount.toString()),
                       ],
+
                     ),
-                  ),
-                ],
+                    Container(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ListTile(
+                        title: Text('\$${product.price}'),
+                        trailing: GestureDetector(
+                          onTap: () {
+                            Provider.of<CartProvider>(context, listen: false).addToCart(product);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const CartScreen()),
+                            );
+                          },
+                          child: const Icon(
+                            Icons.add_box_rounded,
+                            color: Colors.green,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           );
