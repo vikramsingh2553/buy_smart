@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../model/user_model.dart';
-import '../service/user_api_service.dart';
+import '../service/auth_api_service.dart';
 
-class UserProvider extends ChangeNotifier {
-  final UserApiService _userService = UserApiService();
+class AuthProvider extends ChangeNotifier {
+  final AuthApiService _userService = AuthApiService();
   bool _isLoading = false;
 
   bool get isLoading => _isLoading;
