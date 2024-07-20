@@ -1,4 +1,8 @@
+import 'package:buy_smart/auth/ui/favorites_screen.dart';
+import 'package:buy_smart/cart/ui/cart_screen.dart';
+import 'package:buy_smart/product/ui/explore_screen.dart';
 import 'package:buy_smart/product/ui/home_screen.dart';
+import 'package:buy_smart/product/ui/setting_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,10 +16,10 @@ class StartingHomeScreen extends StatefulWidget {
 class _StartingHomeScreenState extends State<StartingHomeScreen> {
   final List<Widget> screens = [
     const HomeScreen(),
-    const Center(child: Text('Explore Screen')),
-    const Center(child: Text('Cart Screen')),
-    const Center(child: Text('Favourite Screen')),
-    const Center(child: Text('Account Screen')),
+    const ExploreScreen(),
+    const CartScreen(),
+    const FavoritesScreen(),
+    const SettingScreen(),
   ];
   int currentTab = 0;
 
