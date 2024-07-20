@@ -1,4 +1,4 @@
-import 'package:buy_smart/auth/ui/welcome_screen.dart';
+
 import 'package:buy_smart/cart/provider/cart_provider.dart';
 import 'package:buy_smart/product/provider/product_provider.dart';
 import 'package:buy_smart/product/ui/home_screen.dart';
