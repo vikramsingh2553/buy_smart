@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../model/user_model.dart';
-import '../provider/user_provider.dart';
+import '../provider/auth_provider.dart';
 import 'login_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -27,7 +27,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         password.isNotEmpty &&
         password == confirmPassword) {
       final user = UserModel(username: username, password: password);
-      final userProvider = Provider.of<UserProvider>(context, listen: false);
+      final userProvider = Provider.of<AuthProvider>(context, listen: false);
       final success = await userProvider.register(user);
 
       if (success) {
@@ -54,7 +54,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isLoading = Provider.of<UserProvider>(context).isLoading;
+    final isLoading = Provider.of<AuthProvider>(context).isLoading;
 
     return Scaffold(
       appBar: AppBar(

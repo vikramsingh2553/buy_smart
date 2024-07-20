@@ -1,3 +1,4 @@
+import 'package:buy_smart/auth/ui/favorites_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:buy_smart/product/model/product_model.dart';
@@ -40,14 +41,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.only(right: 16.0),
                 child: Row(
                   children: [
-                    GestureDetector( onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const CartScreen()),
-                      );
-                    },
-                        child: const Icon(Icons.shopping_cart)),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const FavoritesScreen()),
+                        );
+                      },
+                      child: const Icon(Icons.favorite),
+                    ),
+                    const SizedBox(width: 12),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const CartScreen()),
+                        );
+                      },
+                      child: const Icon(Icons.shopping_cart),
+                    ),
                     Text(cartProvider.cartItems.length.toString()),
+                    const SizedBox(width: 16),
                   ],
                 ),
               );
@@ -121,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildProductList(List<ProductModel> products) {
     return SizedBox(
-      height: 200, // Adjust the height as necessary
+      height: 200,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: products.length,
@@ -129,7 +143,6 @@ class _HomeScreenState extends State<HomeScreen> {
           final product = products[index];
           return Padding(
             padding: const EdgeInsets.only(right: 16.0),
-
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -146,73 +159,52 @@ class _HomeScreenState extends State<HomeScreen> {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Image.network(
                     //   product.imageUrl,
-                    //   width: 72,
-                    //   height: 80,
+                    //   width: double.infinity,
+                    //   height: 100,
+                    //   fit: BoxFit.cover,
                     // ),
-                    Container(
+                    Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: ListTile(
-                        title: Text(product.name),
-                        subtitle: Text(product.description),
+                      child: Text(
+                        product.name,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
-
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.4,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey.shade300),
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Column(
-                children: [
-                  // Uncomment and use the below line if you have product images
-                  // Image.network(
-                  //   product.imageUrl,
-                  //   width: 72,
-                  //   height: 80,
-                  // ),
-                  ListTile(
-                    title: Text(product.name),
-                    subtitle: Text(product.description),
-                  ),
-                  ListTile(
-                    title: Text('\$${product.price}'),
-                    trailing: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        IconButton(
-                          icon: const Icon(
-                            Icons.add_box_rounded,
-                            color: Colors.green,
-                          ),
-                          onPressed: () {
-                            Provider.of<ProductProvider>(context, listen: false)
-                                .incrementCount(product);
-                          },
-                        ),
-                        Text(product.clickCount.toString()),
-                      ],
-
                     ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Text(
+                        product.description,
+                        style: const TextStyle(color: Colors.grey),
+                      ),
+                    ),
+                    const Spacer(),
                     Container(
                       padding: const EdgeInsets.all(8.0),
-                      child: ListTile(
-                        title: Text('\$${product.price}'),
-                        trailing: GestureDetector(
-                          onTap: () {
-                            Provider.of<CartProvider>(context, listen: false).addToCart(product);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const CartScreen()),
-                            );
-                          },
-                          child: const Icon(
-                            Icons.add_box_rounded,
-                            color: Colors.green,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('\$${product.price}'),
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                icon: const Icon(
+                                  Icons.add_box_rounded,
+                                  color: Colors.green,
+                                ),
+                                onPressed: () {
+                                  Provider.of<ProductProvider>(context, listen: false)
+                                      .incrementCount(product);
+                                },
+                              ),
+                              Text(product.clickCount.toString()),
+                            ],
                           ),
-                        ),
+                        ],
                       ),
                     ),
                   ],

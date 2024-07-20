@@ -1,9 +1,10 @@
-import 'package:buy_smart/auth/ui/welcome_screen.dart';
+
+import 'package:buy_smart/cart/provider/cart_provider.dart';
 import 'package:buy_smart/product/provider/product_provider.dart';
-import 'package:buy_smart/product/ui/profile_screen.dart';
+import 'package:buy_smart/product/ui/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'auth/provider/user_provider.dart';
+import 'auth/provider/auth_provider.dart';
 
 
 void main() {
@@ -15,14 +16,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => UserProvider()),
-        ChangeNotifierProvider(create: (_) => ProductProvider()),      ],
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => ProductProvider()),
+        ChangeNotifierProvider(create: (_) => CartProvider()),
+      ],
       child: MaterialApp(
         title: 'Buy Smart',
         theme: ThemeData(
           primarySwatch: Colors.cyan,
         ),
-        home: ProfileScreen(),
+        home: HomeScreen(),
       ),
     );
   }

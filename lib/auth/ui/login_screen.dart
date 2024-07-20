@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../product/ui/home_screen.dart';
 import '../model/user_model.dart';
-import '../provider/user_provider.dart';
+import '../provider/auth_provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (username.isNotEmpty && password.isNotEmpty) {
       final user = UserModel(username: username, password: password);
-      final userProvider = Provider.of<UserProvider>(context, listen: false);
+      final userProvider = Provider.of<AuthProvider>(context, listen: false);
       final success = await userProvider.login(user);
 
       if (success) {
@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isLoading = Provider.of<UserProvider>(context).isLoading;
+    final isLoading = Provider.of<AuthProvider>(context).isLoading;
 
     return Scaffold(
       appBar: AppBar(
