@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:buy_smart/category/service/category_service.dart';
 import 'package:buy_smart/category/model/category_model.dart';
+import 'package:flutter/scheduler.dart';
 
 class CategoryProvider with ChangeNotifier {
   List<CategoryModel> _categories = [];
@@ -12,16 +13,26 @@ class CategoryProvider with ChangeNotifier {
   final CategoryService _categoryService = CategoryService();
 
   Future<void> fetchCategories() async {
+    if (_isLoading) return;
+
     _isLoading = true;
-    notifyListeners();
+    _notifyListenersSafely();
 
     try {
       _categories = await _categoryService.fetchCategories();
     } catch (error) {
-      throw error;
+      rethrow;
     } finally {
       _isLoading = false;
-      notifyListeners();
+      _notifyListenersSafely();
     }
+  }
+
+  void _notifyListenersSafely() {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      if (hasListeners) {
+        notifyListeners();
+      }
+    });
   }
 }
