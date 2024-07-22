@@ -9,15 +9,19 @@ class ExploreScreen extends StatefulWidget {
 }
 
 class _ExploreScreenState extends State<ExploreScreen> {
-  late Future<void> _fetchCategoriesFuture;
+   Future<void>? _fetchCategoriesFuture;
 
   @override
   void initState() {
     super.initState();
-    _fetchCategoriesFuture = Provider.of<CategoryProvider>(context, listen: false).fetchCategories();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        _fetchCategoriesFuture = Provider.of<CategoryProvider>(context, listen: false).fetchCategories();
+      });
+    });
   }
 
-  @override
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
