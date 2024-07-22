@@ -3,7 +3,6 @@ import 'package:buy_smart/auth/ui/starting_home_screen.dart';
 import 'package:buy_smart/cart/provider/cart_provider.dart';
 import 'package:buy_smart/category/provider/category_provider.dart';
 import 'package:buy_smart/product/provider/product_provider.dart';
-import 'package:buy_smart/product/ui/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'auth/provider/auth_provider.dart';

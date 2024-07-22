@@ -1,11 +1,11 @@
 import 'package:buy_smart/auth/model/user_model.dart';
-import 'package:buy_smart/auth/service/user_api_service.dart';
+import 'package:buy_smart/auth/service/auth_api_service.dart';
 import 'package:flutter/material.dart';
 
 
 
-class UserProvider extends ChangeNotifier {
-  final UserApiService _userService = UserApiService();
+class AuthProvider extends ChangeNotifier {
+  final AuthApiService _userService = AuthApiService();
   bool _isLoading = false;
 
   bool get isLoading => _isLoading;

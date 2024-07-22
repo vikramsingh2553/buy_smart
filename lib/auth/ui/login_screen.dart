@@ -1,5 +1,5 @@
 import 'package:buy_smart/auth/model/user_model.dart';
-import 'package:buy_smart/auth/provider/user_provider.dart';
+import 'package:buy_smart/auth/provider/auth_provider.dart';
 import 'package:buy_smart/auth/ui/register_screen.dart';
 import 'package:buy_smart/product/ui/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (username.isNotEmpty && password.isNotEmpty) {
       final user = UserModel(username: username, password: password);
-      final userProvider = Provider.of<UserProvider>(context, listen: false);
+      final userProvider = Provider.of<AuthProvider>(context, listen: false);
       final success = await userProvider.login(user);
 
       if (success) {
@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isLoading = Provider.of<UserProvider>(context).isLoading;
+    final isLoading = Provider.of<AuthProvider>(context).isLoading;
 
     return Scaffold(
       appBar: AppBar(

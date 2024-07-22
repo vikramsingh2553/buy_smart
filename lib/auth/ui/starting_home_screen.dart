@@ -2,6 +2,7 @@ import 'package:buy_smart/auth/ui/favorites_screen.dart';
 import 'package:buy_smart/cart/ui/cart_screen.dart';
 import 'package:buy_smart/product/ui/explore_screen.dart';
 import 'package:buy_smart/product/ui/home_screen.dart';
+import 'package:buy_smart/product/ui/profile_screen.dart';
 import 'package:buy_smart/product/ui/setting_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class _StartingHomeScreenState extends State<StartingHomeScreen> {
     const ExploreScreen(),
     const CartScreen(),
     const FavoritesScreen(),
-    const SettingScreen(),
+    const ProfileScreen(),
   ];
   int currentTab = 0;
 
