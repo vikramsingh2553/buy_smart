@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 
 
-class UserApiService {
+class AuthApiService {
   Future<bool> register(UserModel user) async {
     final url = Uri.parse('${ApiEndpoints}/register');
     final response = await http.post(url);
