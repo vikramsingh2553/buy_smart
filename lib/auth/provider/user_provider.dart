@@ -1,7 +1,8 @@
+import 'package:buy_smart/auth/model/user_model.dart';
+import 'package:buy_smart/auth/service/user_api_service.dart';
 import 'package:flutter/material.dart';
 
-import '../model/user_model.dart';
-import '../service/user_api_service.dart';
+
 
 class UserProvider extends ChangeNotifier {
   final UserApiService _userService = UserApiService();

@@ -1,8 +1,7 @@
+import 'package:buy_smart/auth/model/user_model.dart';
+import 'package:buy_smart/auth/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../model/user_model.dart';
-import '../provider/user_provider.dart';
 import 'login_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -90,7 +89,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               color: Colors.white,
             ),
             onPressed: () {
-              // Add action for the info button if needed
             },
           ),
         ],

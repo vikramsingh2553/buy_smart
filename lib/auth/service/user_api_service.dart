@@ -1,7 +1,8 @@
+import 'package:buy_smart/auth/model/user_model.dart';
+import 'package:buy_smart/product/shared/api_endpoints.dart';
 import 'package:http/http.dart' as http;
 
-import '../../product/shared/api_endpoints.dart';
-import '../model/user_model.dart';
+
 
 class UserApiService {
   Future<bool> register(UserModel user) async {
