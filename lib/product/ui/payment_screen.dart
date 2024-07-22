@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
 class PaymentScreen extends StatefulWidget {
-  const PaymentScreen({super.key});
-
   @override
-  State<PaymentScreen> createState() => _PaymentScreenState();
+  _PaymentScreenState createState() => _PaymentScreenState();
 }
 
 class _PaymentScreenState extends State<PaymentScreen> {
@@ -14,7 +12,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Payment'),
+        title: Text('Payment'),
         backgroundColor: Colors.blueAccent,
       ),
       body: Padding(
@@ -22,11 +20,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'Payment Method',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8),
             Row(
               children: [
                 Radio(
@@ -39,8 +37,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   },
                   activeColor: Colors.blueAccent,
                 ),
-                const Text('Card'),
-                const SizedBox(width: 6,),
+                Text('Card'),
+                SizedBox(width: 6,),
                 Radio(
                   value: 'upi',
                   groupValue: _paymentMethod,
@@ -51,8 +49,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   },
                   activeColor: Colors.blueAccent,
                 ),
-                const Text('UPI'),
-                const SizedBox(width: 4,),
+                Text('UPI'),
+                SizedBox(width: 4,),
                 Radio(
                   value: 'qr',
                   groupValue: _paymentMethod,
@@ -63,17 +61,17 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   },
                   activeColor: Colors.blueAccent,
                 ),
-                const Text('QR Code'),
+                Text('QR Code'),
               ],
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16),
             _paymentMethod == 'card'
-                ? const CardDetailsForm()
+                ? CardDetailsForm()
                 : _paymentMethod == 'upi'
-                ? const UPIForm()
-                : const QRCodeForm(),
-            const SizedBox(height: 16),
-            const Row(
+                ? UPIForm()
+                : QRCodeForm(),
+            SizedBox(height: 16),
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
@@ -82,21 +80,21 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 ),
                 Text(
                   '\₹100.00',
-                  style: TextStyle(fontSize: 18, color: Colors.redAccent),
+                  style: TextStyle(fontSize: 18, color: Colors.redAccent), // Set total amount text color
                 ),
               ],
             ),
-            const SizedBox(height: 24),
+            SizedBox(height: 24),
             ElevatedButton(
               onPressed: () {
                 // Payment logic here
               },
+              child: Text('Pay Now'),
               style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white, backgroundColor: Colors.blueAccent,
-                padding: const EdgeInsets.all(16),
-                textStyle: const TextStyle(fontSize: 18),
+                foregroundColor: Colors.white, backgroundColor: Colors.blueAccent, // Set button text color
+                padding: EdgeInsets.all(16),
+                textStyle: TextStyle(fontSize: 18),
               ),
-              child: const Text('Pay Now'),
             ),
           ],
         ),
@@ -106,37 +104,35 @@ class _PaymentScreenState extends State<PaymentScreen> {
 }
 
 class CardDetailsForm extends StatelessWidget {
-  const CardDetailsForm({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Card Details',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8),
         TextFormField(
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
             labelText: 'Card Number',
             border: OutlineInputBorder(),
           ),
           keyboardType: TextInputType.number,
         ),
-        const SizedBox(height: 6,),
+        SizedBox(height: 6,),
         TextFormField(
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
             labelText: 'Expiry Date',
             border: OutlineInputBorder(),
           ),
           keyboardType: TextInputType.datetime,
         ),
-        const SizedBox(height: 6,),
+        SizedBox(height: 6,),
 
         TextFormField(
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
             labelText: 'CVV',
             border: OutlineInputBorder(),
           ),
@@ -148,20 +144,18 @@ class CardDetailsForm extends StatelessWidget {
 }
 
 class UPIForm extends StatelessWidget {
-  const UPIForm({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'UPI Details',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8),
         TextFormField(
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
             labelText: 'UPI ID',
             border: OutlineInputBorder(),
           ),
@@ -173,18 +167,16 @@ class UPIForm extends StatelessWidget {
 }
 
 class QRCodeForm extends StatelessWidget {
-  const QRCodeForm({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'QR Code',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8),
         Image.asset('assets/images/download (1).png'),
       ],
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SettingScreen extends StatefulWidget {
-  const SettingScreen({super.key});
+  const SettingScreen({Key? key}) : super(key: key);
 
   @override
   State<SettingScreen> createState() => SettingScreenState();
@@ -281,14 +281,14 @@ class SettingScreenState extends State<SettingScreen> {
                         // Save the new password
                         Navigator.pop(context);
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Password changed successfully!'),
+                          SnackBar(
+                            content: const Text('Password changed successfully!'),
                           ),
                         );
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Passwords do not match!'),
+                          SnackBar(
+                            content: const Text('Passwords do not match!'),
                           ),
                         );
                       }
