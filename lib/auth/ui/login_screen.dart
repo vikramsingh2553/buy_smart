@@ -1,10 +1,10 @@
+import 'package:buy_smart/auth/model/user_model.dart';
+import 'package:buy_smart/auth/provider/auth_provider.dart';
 import 'package:buy_smart/auth/ui/register_screen.dart';
+import 'package:buy_smart/product/ui/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../product/ui/home_screen.dart';
-import '../model/user_model.dart';
-import '../provider/auth_provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

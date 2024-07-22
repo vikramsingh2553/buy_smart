@@ -80,7 +80,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 ),
                 Text(
                   '\₹100.00',
-                  style: TextStyle(fontSize: 18, color: Colors.redAccent), // Set total amount text color
+                  style: TextStyle(fontSize: 18, color: Colors.redAccent),
                 ),
               ],
             ),
@@ -91,7 +91,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               },
               child: Text('Pay Now'),
               style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white, backgroundColor: Colors.blueAccent, // Set button text color
+                foregroundColor: Colors.white, backgroundColor: Colors.blueAccent,
                 padding: EdgeInsets.all(16),
                 textStyle: TextStyle(fontSize: 18),
               ),
