@@ -127,5 +127,17 @@ class StringConst {
   static const String setting = 'Settings';
   static const String help = 'Help';
   static const String about = 'About';
-
+  static const String personalInfo = 'Personal Information';
+  static const String fullName = 'Full Name';
+  static const String dob = 'Date of Birth';
+  static const String change = 'Change';
+  static const String sales = 'Sales';
+  static const String newArrival = 'New Arrival';
+  static const String deliveryStatus = 'Delivery Status Changes';
+  static const String passChange = 'Password Change';
+  static const String oldPass = 'Old Password';
+  static const String newPass = 'New Password';
+  static const String passChangeSuccess = 'Password changed successfully!';
+  static const String passNotMatch = 'Passwords do not match!';
+  static const String savePass = 'Save Password';
 }
