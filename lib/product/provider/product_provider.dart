@@ -21,9 +21,9 @@ class ProductProvider with ChangeNotifier {
   Future<void> fetchProducts() async {
     try {
       _products = await _productService.fetchProducts();
-      print('Products loaded: ${_products.length}');
+
     } catch (e) {
-      print('Error fetching products: $e');
+     return;
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -33,9 +33,8 @@ class ProductProvider with ChangeNotifier {
   Future<void> fetchFavorites() async {
     try {
       _favorites = await _productService.fetchFavorites();
-      print('Favorites loaded: ${_favorites.length}');
     } catch (e) {
-      print('Error fetching favorites: $e');
+      return;
     } finally {
       notifyListeners();
     }
@@ -46,11 +45,10 @@ class ProductProvider with ChangeNotifier {
       bool success = await _productService.addToFavorites(product.id);
       if (success) {
         _favorites.add(product);
-        print('Added to favorites: ${product.name}');
         notifyListeners();
       }
     } catch (e) {
-      print('Error adding to favorites: $e');
+      return;
     }
   }
 
@@ -59,11 +57,11 @@ class ProductProvider with ChangeNotifier {
       bool success = await _productService.removeFromFavorites(product.id);
       if (success) {
         _favorites.removeWhere((item) => item.id == product.id);
-        print('Removed from favorites: ${product.name}');
+
         notifyListeners();
       }
     } catch (e) {
-      print('Error removing from favorites: $e');
+      return;
     }
   }
 
