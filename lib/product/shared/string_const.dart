@@ -83,13 +83,38 @@ class StringConst {
   static const String mayBe = 'Maybe';
   static const String notAtMoment = 'Not at the moment.';
   static const String thankTime = 'Thank you for your time!';
-  static const String immediateSupport = "If you have any immediate concerns or\nquestions, "
+  static const String immediateSupport =
+      "If you have any immediate concerns or\nquestions, "
       "please don't hesitate to contact\nour support team ";
   static const String here = 'here';
   static const String submit = 'Submit';
   static const String notifications = 'NOTIFICATIONS';
-  static const String allowNotification =  'Allow app to send you notifications about payments.';
-  static const String ensureNotification = 'Ensure that your app notifications are enabled to receive timely updates.';
-  static const String allowUpdate = 'Allow notifications about the app updates.';
-  static const String getUpdate = 'Get instant updates on latest features, improvements, and announcements.';
+  static const String allowNotification =
+      'Allow app to send you notifications about payments.';
+  static const String ensureNotification =
+      'Ensure that your app notifications are enabled to receive timely updates.';
+  static const String allowUpdate =
+      'Allow notifications about the app updates.';
+  static const String getUpdate =
+      'Get instant updates on latest features, improvements, and announcements.';
+  static const String card = 'card';
+  static const String cardCapital = 'Card';
+  static const String upi = 'upi';
+  static const String upiCapital = 'UPI';
+  static const String qr = 'qr';
+  static const String qrCode = 'QR Code';
+  static const String totalAmount = 'Total Amount:';
+  static const String rupees = '\₹100.00';
+  static const String payNow = 'Pay Now';
+  static const String cardDetails = 'Card Details';
+  static const String cardNumber = 'Card Number';
+  static const String expiryDate = 'Expiry Date';
+  static const String cvv = 'CVV';
+  static const String upiDetails = 'UPI Details';
+  static const String upiID = 'UPI ID';
+  static const String paymentMethod = 'Payment Method';
+  static const String addFavorite = 'Added to favorites! ';
+  static const String removeFavorite = 'Removed from favorites!';
+  static const String addedCart = ' Added to cart!';
+  static const String addCart = 'Add to cart';
 }
