@@ -1,3 +1,4 @@
+import 'package:buy_smart/product/shared/string_const.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -31,23 +32,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
       final success = await userProvider.register(user);
 
       if (success) {
-        print('Registration successful');
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => LoginScreen()),
+          MaterialPageRoute(builder: (context) => const LoginScreen()),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Registration failed')),
+          const SnackBar(content: Text(StringConst.registerFailSnack)),
         );
       }
     } else if (password != confirmPassword) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Passwords do not match')),
+        const SnackBar(content: Text(StringConst.registerPassNotMatch)),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please fill out all fields')),
+        const SnackBar(content: Text(StringConst.registerWarnSnack)),
       );
     }
   }
@@ -61,7 +61,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         elevation: 0,
         backgroundColor: Colors.white,
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [Colors.greenAccent, Colors.teal],
               begin: Alignment.topLeft,
@@ -69,11 +69,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
           ),
         ),
-        title: Row(
+        title: const Row(
           children: [
-            const SizedBox(width: 8),
-            const Text(
-              'REGISTER TO BUY SMART',
+            SizedBox(width: 8),
+            Text(
+              StringConst.registerBuy,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -85,12 +85,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
         centerTitle: false,
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.info_outline,
               color: Colors.white,
             ),
             onPressed: () {
-              // Add action for the info button if needed
+
             },
           ),
         ],
@@ -109,7 +109,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   shape: BoxShape.circle,
                   color: Colors.cyan[50],
                 ),
-                child: Center(
+                child: const Center(
                   child: Icon(
                     Icons.shopping_cart,
                     size: 60,
@@ -129,7 +129,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       const Text(
-                        'Create Your Account',
+                        StringConst.createAccount,
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
@@ -137,14 +137,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 16),
                       const Text(
-                        'Username',
+                        StringConst.username,
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       TextField(
                         controller: usernameController,
                         decoration: const InputDecoration(
-                          hintText: 'Enter your username',
+                          hintText: StringConst.userHint,
                           border: OutlineInputBorder(),
                           contentPadding:
                               EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -152,7 +152,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 16),
                       const Text(
-                        'Password',
+                        StringConst.password,
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
@@ -160,7 +160,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         controller: passwordController,
                         obscureText: true,
                         decoration: const InputDecoration(
-                          hintText: 'Enter your password',
+                          hintText: StringConst.passHint,
                           border: OutlineInputBorder(),
                           contentPadding:
                               EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -168,7 +168,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 16),
                       const Text(
-                        'Confirm Password',
+                        StringConst.confirmPass,
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
@@ -176,7 +176,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         controller: confirmPasswordController,
                         obscureText: true,
                         decoration: const InputDecoration(
-                          hintText: 'Confirm your password',
+                          hintText: StringConst.confirmPassHint,
                           border: OutlineInputBorder(),
                           contentPadding:
                               EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -195,7 +195,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   textStyle: const TextStyle(fontSize: 16),
                                 ),
                                 child: const Text(
-                                  'Register',
+                                  StringConst.register,
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
@@ -215,7 +215,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             // );
                           },
                           child: const Text(
-                            'Already have an account? Login',
+                            StringConst.alreadyAccount,
                             style: TextStyle(color: Colors.cyan, fontSize: 16),
                           ),
                         ),
@@ -225,7 +225,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         child: TextButton(
                           onPressed: () {},
                           child: const Text(
-                            'Forgot Password?',
+                            StringConst.forgot,
                             style: TextStyle(color: Colors.cyan, fontSize: 16),
                           ),
                         ),

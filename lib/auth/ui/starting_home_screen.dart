@@ -1,5 +1,6 @@
 import 'package:buy_smart/auth/ui/favorites_screen.dart';
 import 'package:buy_smart/cart/ui/cart_screen.dart';
+import 'package:buy_smart/product/shared/string_const.dart';
 import 'package:buy_smart/product/ui/explore_screen.dart';
 import 'package:buy_smart/product/ui/home_screen.dart';
 import 'package:buy_smart/product/ui/setting_screen.dart';
@@ -42,23 +43,23 @@ class _StartingHomeScreenState extends State<StartingHomeScreen> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.shopify),
-            label: 'Shop',
+            label: StringConst.startNavigationShop,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.manage_search_sharp),
-            label: 'Explore',
+            label: StringConst.startNavigationExplore,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
+            label: StringConst.startNavigationCart,
           ),
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.heart),
-            label: 'Favourite',
+            label: StringConst.startNavigationFav,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.perm_identity),
-            label: 'Account',
+            label: StringConst.startNavigationAccount,
           ),
         ],
       ),

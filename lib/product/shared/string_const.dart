@@ -1,11 +1,12 @@
-class StringConst{
+class StringConst {
   static const String splashBuy = 'Buy Smart';
   static const String splashOnShop = 'Online Shopping';
   static const String welcomeText = 'Welcome To Buy Smart';
   static const String welcomeDesc = 'Get your groceries in as fast as one hour';
   static const String welcomeStartButton = 'Get Started';
   static const String loginFailSnack = 'Login Failed';
-  static const String loginWarnSnack = 'Please enter both username and password';
+  static const String loginWarnSnack =
+      'Please enter both username and password';
   static const String loginBuy = 'LOGIN TO BUY SMART';
   static const String loginAccount = 'Login to Your Account';
   static const String username = 'Username';
@@ -15,6 +16,7 @@ class StringConst{
   static const String login = 'Login';
   static const String noAccount = "Don't have an account? Register";
   static const String registerFailSnack = 'Registration failed';
+  static const String registerPassNotMatch = 'Passwords do not match';
   static const String registerWarnSnack = 'Please fill out all fields';
   static const String registerBuy = 'REGISTER TO BUY SMART';
   static const String createAccount = ' Create Your Account';
@@ -26,7 +28,7 @@ class StringConst{
   static const String startNavigationShop = 'Shop';
   static const String startNavigationExplore = 'Explore';
   static const String startNavigationCart = 'Cart';
-  static const String startNavigation = 'Favorite';
+  static const String startNavigationFav = 'Favorite';
   static const String startNavigationAccount = 'Account';
   static const String searchProducts = ' Search for products';
   static const String offer = 'Exclusive Offer';
@@ -35,4 +37,51 @@ class StringConst{
   static const String findProducts = 'Find Products';
   static const String error = ' Error';
   static const String searchStore = 'Search Store';
+  static const String checkout = 'Checkout';
+  static const String delivery = 'Delivery';
+  static const String selectMethod = 'Select Method';
+  static const String payment = 'Payment';
+  static const String selectPayment = 'Select Payment';
+  static const String promoCode = 'Promo Code';
+  static const String pickDiscount = 'Pick Discount';
+  static const String totalCost = 'Total Cost';
+  static const String payTerms =
+      'Place an order you agree to our Terms and Conditions';
+  static const String placeOrder = 'Place Order';
+  static const String deliveryAddress = 'Delivery Address';
+  static const String name = 'Name';
+  static const String enterName = 'Please enter your address';
+  static const String address = 'Address';
+  static const String enterAddress = '';
+  static const String city = 'City';
+  static const String enterCity = 'Please enter your city';
+  static const String state = 'State';
+  static const String enterState = 'Please enter your state';
+  static const String pinCode = 'Pin code';
+  static const String enterPinCode = 'Please enter your pin code';
+  static const String number = 'Mobile Number';
+  static const String enterNumber = 'Please enter your mobile number';
+  static const String saveAddress = 'Save Address';
+  static const String reteUs = 'Rate Us';
+  static const String veryDissatisfied = 'Very Dissatisfied';
+  static const String dissatisfied = 'Dissatisfied';
+  static const String neutral = 'Neutral';
+  static const String satisfied = 'Satisfied';
+  static const String verySatisfied = 'Very Satisfied';
+  static const String feedback = 'Feedback';
+  static const String loveToHear = "We'd Love to Hear From You!";
+  static const String howSatisfied = 'How satisfied are you with our app?';
+  static const String likeMost = 'What do you like most about the app?';
+  static const String iLiked = 'I liked ...';
+  static const String thinkImprove = 'What areas do you think we can improve?';
+  static const String typeAns = 'Type your answer here.';
+  static const String youRecommend = 'Would you recommend our app to others?';
+  static const String yesDefinitely = 'Yes Definitely';
+  static const String mayBe = 'Maybe';
+  static const String notAtMoment = 'Not at the moment.';
+  static const String thankTime = 'Thank you for your time!';
+  static const String immediateSupport = "If you have any immediate concerns or\nquestions, "
+      "please don't hesitate to contact\nour support team ";
+  static const String here = 'here';
+  static const String submit = 'Submit';
 }

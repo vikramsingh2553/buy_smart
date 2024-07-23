@@ -1,3 +1,4 @@
+import 'package:buy_smart/product/shared/string_const.dart';
 import 'package:flutter/material.dart';
 
 import 'login_screen.dart';
@@ -36,7 +37,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const Text(
-                    'Welcome to Buy Smart',
+                    StringConst.welcomeText,
                     style: TextStyle(
                       fontSize: 28.0,
                       fontWeight: FontWeight.bold,
@@ -45,7 +46,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ),
                   const SizedBox(height: 12.0),
                   const Text(
-                    'Get your groceries in as fast as one hour',
+                    StringConst.welcomeDesc,
                     style: TextStyle(
                       fontSize: 18.0,
                       color: Colors.white70,
@@ -73,7 +74,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       ),
                     ),
                     child: const Text(
-                      'Get Started',
+                      StringConst.welcomeStartButton,
                       style: TextStyle(
                         fontSize: 20.0,
                         color: Colors.white,
