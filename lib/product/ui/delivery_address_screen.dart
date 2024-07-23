@@ -1,3 +1,4 @@
+import 'package:buy_smart/product/shared/string_const.dart';
 import 'package:flutter/material.dart';
 
 class DeliveryAddressScreen extends StatefulWidget {
@@ -10,13 +11,13 @@ class DeliveryAddressScreen extends StatefulWidget {
 class _DeliveryAddressScreenState extends State<DeliveryAddressScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  String? _name, _address, _city, _state, _pincode, _mobileNumber;
+  String? name, address, city, state, pinCode, mobileNumber;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Delivery Address'),
+        title: const Text(StringConst.deliveryAddress),
         backgroundColor: Colors.blueAccent,
       ),
       body: Padding(
@@ -27,7 +28,7 @@ class _DeliveryAddressScreenState extends State<DeliveryAddressScreen> {
             children: [
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'Name',
+                  labelText: StringConst.name,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -36,16 +37,16 @@ class _DeliveryAddressScreenState extends State<DeliveryAddressScreen> {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter your name';
+                    return StringConst.enterName;
                   }
                   return null;
                 },
-                onSaved: (value) => _name = value,
+                onSaved: (value) => name = value,
               ),
               const SizedBox(height: 16),
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'Address',
+                  labelText: StringConst.address,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -54,11 +55,11 @@ class _DeliveryAddressScreenState extends State<DeliveryAddressScreen> {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter your address';
+                    return StringConst.enterAddress;
                   }
                   return null;
                 },
-                onSaved: (value) => _address = value,
+                onSaved: (value) => address = value,
               ),
               const SizedBox(height: 16),
               Row(
@@ -66,7 +67,7 @@ class _DeliveryAddressScreenState extends State<DeliveryAddressScreen> {
                   Expanded(
                     child: TextFormField(
                       decoration: InputDecoration(
-                        labelText: 'City',
+                        labelText: StringConst.city,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -75,18 +76,18 @@ class _DeliveryAddressScreenState extends State<DeliveryAddressScreen> {
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your city';
+                          return StringConst.enterCity;
                         }
                         return null;
                       },
-                      onSaved: (value) => _city = value,
+                      onSaved: (value) => city = value,
                     ),
                   ),
                   const SizedBox(width: 16),
                   Expanded(
                     child: TextFormField(
                       decoration: InputDecoration(
-                        labelText: 'State',
+                        labelText: StringConst.state,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -95,11 +96,11 @@ class _DeliveryAddressScreenState extends State<DeliveryAddressScreen> {
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your state';
+                          return StringConst.enterState;
                         }
                         return null;
                       },
-                      onSaved: (value) => _state = value,
+                      onSaved: (value) => state = value,
                     ),
                   ),
                 ],
@@ -110,7 +111,7 @@ class _DeliveryAddressScreenState extends State<DeliveryAddressScreen> {
                   Expanded(
                     child: TextFormField(
                       decoration: InputDecoration(
-                        labelText: 'Pincode',
+                        labelText: StringConst.pinCode,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -119,18 +120,18 @@ class _DeliveryAddressScreenState extends State<DeliveryAddressScreen> {
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your pincode';
+                          return StringConst.enterPinCode;
                         }
                         return null;
                       },
-                      onSaved: (value) => _pincode = value,
+                      onSaved: (value) => pinCode = value,
                     ),
                   ),
                   const SizedBox(width: 16),
                   Expanded(
                     child: TextFormField(
                       decoration: InputDecoration(
-                        labelText: 'Mobile Number',
+                        labelText: StringConst.number,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -139,11 +140,11 @@ class _DeliveryAddressScreenState extends State<DeliveryAddressScreen> {
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your mobile number';
+                          return StringConst.enterNumber;
                         }
                         return null;
                       },
-                      onSaved: (value) => _mobileNumber = value,
+                      onSaved: (value) => mobileNumber = value,
                     ),
                   ),
                 ],
@@ -153,15 +154,14 @@ class _DeliveryAddressScreenState extends State<DeliveryAddressScreen> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
-                    // Save the form data and navigate to the next screen
                   }
                 },
-                child: const Text('Save Address',style: TextStyle(color: Colors.white),),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blueAccent,
                   padding: const EdgeInsets.all(16),
                   textStyle: const TextStyle(fontSize: 18),
                 ),
+                child: const Text(StringConst.saveAddress,style: TextStyle(color: Colors.white),),
               ),
             ],
           ),
