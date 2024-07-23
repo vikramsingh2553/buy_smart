@@ -1,4 +1,3 @@
-import 'package:buy_smart/product/shared/string_const.dart';
 import 'package:flutter/material.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -32,7 +31,7 @@ class SettingScreenState extends State<SettingScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey.shade100,
-        title: const Text(StringConst.setting),
+        title: const Text('Setting'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -41,7 +40,7 @@ class SettingScreenState extends State<SettingScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                StringConst.personalInfo,
+                'Personal Information',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
@@ -51,7 +50,7 @@ class SettingScreenState extends State<SettingScreen> {
                   child: TextFormField(
                     cursorColor: Colors.black,
                     decoration: const InputDecoration(
-                      hintText: StringConst.fullName,
+                      hintText: 'Full Name',
                       hintStyle: TextStyle(color: Colors.black26),
                       border: InputBorder.none,
                     ),
@@ -66,7 +65,7 @@ class SettingScreenState extends State<SettingScreen> {
                     controller: dobController,
                     cursorColor: Colors.black,
                     decoration: const InputDecoration(
-                      hintText: StringConst.dob,
+                      hintText: 'Date of Birth',
                       hintStyle: TextStyle(color: Colors.black26),
                       border: InputBorder.none,
                     ),
@@ -82,7 +81,7 @@ class SettingScreenState extends State<SettingScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    StringConst.password,
+                    "Password",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   GestureDetector(
@@ -90,7 +89,7 @@ class SettingScreenState extends State<SettingScreen> {
                       showPasswordChangeBottomSheet(context);
                     },
                     child: const Text(
-                      StringConst.change,
+                      'Change',
                       style: TextStyle(
                         color: Colors.red,
                       ),
@@ -108,7 +107,7 @@ class SettingScreenState extends State<SettingScreen> {
                     },
                     cursorColor: Colors.black,
                     decoration: const InputDecoration(
-                      hintText: StringConst.password,
+                      hintText: 'Password',
                       hintStyle: TextStyle(color: Colors.black26),
                       border: InputBorder.none,
                     ),
@@ -117,14 +116,14 @@ class SettingScreenState extends State<SettingScreen> {
               ),
               const SizedBox(height: 30),
               const Text(
-                StringConst.notifications,
+                'Notifications',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
               const SizedBox(height: 14),
               Row(
                 children: [
                   const Expanded(
-                    child: Text(StringConst.sales),
+                    child: Text('Sales'),
                   ),
                   Transform.scale(
                     scale: 0.7,
@@ -145,7 +144,7 @@ class SettingScreenState extends State<SettingScreen> {
               Row(
                 children: [
                   const Expanded(
-                    child: Text(StringConst.newArrival),
+                    child: Text('New Arrival'),
                   ),
                   Transform.scale(
                     scale: 0.7,
@@ -166,7 +165,7 @@ class SettingScreenState extends State<SettingScreen> {
               Row(
                 children: [
                   const Expanded(
-                    child: Text(StringConst.deliveryStatus),
+                    child: Text('Delivery Status Changes'),
                   ),
                   Transform.scale(
                     scale: 0.7,
@@ -219,7 +218,7 @@ class SettingScreenState extends State<SettingScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   const Text(
-                    StringConst.passChange,
+                    'Password Change',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 20),
@@ -231,7 +230,7 @@ class SettingScreenState extends State<SettingScreen> {
                         cursorColor: Colors.black,
                         obscureText: true,
                         decoration: const InputDecoration(
-                          hintText: StringConst.oldPass,
+                          hintText: 'Old Password',
                           hintStyle: TextStyle(color: Colors.black26),
                           border: InputBorder.none,
                         ),
@@ -249,7 +248,7 @@ class SettingScreenState extends State<SettingScreen> {
                         cursorColor: Colors.black,
                         obscureText: true,
                         decoration: const InputDecoration(
-                          hintText: StringConst.newPass,
+                          hintText: 'New Password',
                           hintStyle: TextStyle(color: Colors.black26),
                           border: InputBorder.none,
                         ),
@@ -267,7 +266,7 @@ class SettingScreenState extends State<SettingScreen> {
                         cursorColor: Colors.black,
                         obscureText: true,
                         decoration: const InputDecoration(
-                          hintText: StringConst.confirmPass,
+                          hintText: 'Confirm Password',
                           hintStyle: TextStyle(color: Colors.black26),
                           border: InputBorder.none,
                         ),
@@ -283,13 +282,13 @@ class SettingScreenState extends State<SettingScreen> {
                         Navigator.pop(context);
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text(StringConst.passChangeSuccess),
+                            content: Text('Password changed successfully!'),
                           ),
                         );
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text(StringConst.passNotMatch),
+                            content: Text('Passwords do not match!'),
                           ),
                         );
                       }
@@ -305,7 +304,7 @@ class SettingScreenState extends State<SettingScreen> {
                       ),
                     ),
                     child: const Text(
-                      StringConst.savePass,
+                      'Save Password',
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ),

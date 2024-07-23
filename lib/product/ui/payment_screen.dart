@@ -1,4 +1,3 @@
-import 'package:buy_smart/product/shared/string_const.dart';
 import 'package:flutter/material.dart';
 
 class PaymentScreen extends StatefulWidget {
@@ -9,13 +8,13 @@ class PaymentScreen extends StatefulWidget {
 }
 
 class _PaymentScreenState extends State<PaymentScreen> {
-  String _paymentMethod = StringConst.card;
+  String _paymentMethod = 'card';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(StringConst.payment),
+        title: const Text('Payment'),
         backgroundColor: Colors.blueAccent,
       ),
       body: Padding(
@@ -24,14 +23,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              StringConst.paymentMethod,
+              'Payment Method',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
             const SizedBox(height: 8),
             Row(
               children: [
                 Radio(
-                  value: StringConst.card,
+                  value: 'card',
                   groupValue: _paymentMethod,
                   onChanged: (value) {
                     setState(() {
@@ -40,10 +39,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   },
                   activeColor: Colors.blueAccent,
                 ),
-                const Text(StringConst.cardCapital),
+                const Text('Card'),
                 const SizedBox(width: 6,),
                 Radio(
-                  value: StringConst.upi,
+                  value: 'upi',
                   groupValue: _paymentMethod,
                   onChanged: (value) {
                     setState(() {
@@ -52,10 +51,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   },
                   activeColor: Colors.blueAccent,
                 ),
-                const Text(StringConst.upiCapital),
+                const Text('UPI'),
                 const SizedBox(width: 4,),
                 Radio(
-                  value: StringConst.qr,
+                  value: 'qr',
                   groupValue: _paymentMethod,
                   onChanged: (value) {
                     setState(() {
@@ -64,13 +63,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   },
                   activeColor: Colors.blueAccent,
                 ),
-                const Text(StringConst.qrCode),
+                const Text('QR Code'),
               ],
             ),
             const SizedBox(height: 16),
-            _paymentMethod == StringConst.card
+            _paymentMethod == 'card'
                 ? const CardDetailsForm()
-                : _paymentMethod == StringConst.upi
+                : _paymentMethod == 'upi'
                 ? const UPIForm()
                 : const QRCodeForm(),
             const SizedBox(height: 16),
@@ -78,11 +77,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  StringConst.totalAmount,
+                  'Total Amount:',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 Text(
-                  StringConst.rupees,
+                  '\₹100.00',
                   style: TextStyle(fontSize: 18, color: Colors.redAccent),
                 ),
               ],
@@ -97,7 +96,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 padding: const EdgeInsets.all(16),
                 textStyle: const TextStyle(fontSize: 18),
               ),
-              child: const Text(StringConst.payNow),
+              child: const Text('Pay Now'),
             ),
           ],
         ),
@@ -115,13 +114,13 @@ class CardDetailsForm extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          StringConst.cardDetails,
+          'Card Details',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         const SizedBox(height: 8),
         TextFormField(
           decoration: const InputDecoration(
-            labelText: StringConst.cardNumber,
+            labelText: 'Card Number',
             border: OutlineInputBorder(),
           ),
           keyboardType: TextInputType.number,
@@ -129,7 +128,7 @@ class CardDetailsForm extends StatelessWidget {
         const SizedBox(height: 6,),
         TextFormField(
           decoration: const InputDecoration(
-            labelText: StringConst.expiryDate,
+            labelText: 'Expiry Date',
             border: OutlineInputBorder(),
           ),
           keyboardType: TextInputType.datetime,
@@ -138,7 +137,7 @@ class CardDetailsForm extends StatelessWidget {
 
         TextFormField(
           decoration: const InputDecoration(
-            labelText: StringConst.cvv,
+            labelText: 'CVV',
             border: OutlineInputBorder(),
           ),
           keyboardType: TextInputType.number,
@@ -157,13 +156,13 @@ class UPIForm extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          StringConst.upiDetails,
+          'UPI Details',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         const SizedBox(height: 8),
         TextFormField(
           decoration: const InputDecoration(
-            labelText: StringConst.upiID,
+            labelText: 'UPI ID',
             border: OutlineInputBorder(),
           ),
           keyboardType: TextInputType.text,
@@ -182,7 +181,7 @@ class QRCodeForm extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-           StringConst.qrCode,
+          'QR Code',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         const SizedBox(height: 8),
