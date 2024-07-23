@@ -1,3 +1,4 @@
+import 'package:buy_smart/product/shared/string_const.dart';
 import 'package:buy_smart/product/ui/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,12 +17,12 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   int _iconColor = 0;
 
   final List<String> ratingTexts = [
-    'Rate Us'
-    'Very Dissatisfied',
-    'Dissatisfied',
-    'Neutral',
-    'Satisfied',
-    'Very Satisfied'
+    StringConst.reteUs,
+    StringConst.veryDissatisfied,
+    StringConst.dissatisfied,
+    StringConst.neutral,
+    StringConst.satisfied,
+    StringConst.verySatisfied,
     ''
   ];
 
@@ -30,7 +31,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Feedback',
+          StringConst.feedback,
           style: GoogleFonts.montserrat(fontWeight: FontWeight.w500),
         ),
       ),
@@ -47,7 +48,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                       height: 1,
                     ),
                     Text(
-                      "We'd Love to Hear From You!",
+                      StringConst.loveToHear,
                       style: GoogleFonts.montserrat(
                           fontSize: 15,
                           color: const Color(0xff29286E),
@@ -57,7 +58,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                       height: 8,
                     ),
                     Text(
-                      'How satisfied are you with our app?',
+                      StringConst.howSatisfied,
                       style: GoogleFonts.montserrat(
                           fontSize: 15, fontWeight: FontWeight.w500),
                     ),
@@ -106,7 +107,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                       height: 10,
                     ),
                     Text(
-                      'What do you like most about the app?',
+                     StringConst.likeMost,
                       style: GoogleFonts.montserrat(
                           fontSize: 14, fontWeight: FontWeight.w500),
                     ),
@@ -121,7 +122,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                         maxLines: null,
                         keyboardType: TextInputType.multiline,
                         decoration: InputDecoration(
-                          hintText: 'I liked ...',
+                          hintText: StringConst.iLiked,
                           hintStyle: GoogleFonts.montserrat(
                               color: Colors.grey, fontWeight: FontWeight.w500),
                           border: const OutlineInputBorder(
@@ -133,7 +134,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                       height: 8,
                     ),
                     Text(
-                      'What areas do you think we can improve?',
+                     StringConst.thinkImprove,
                       style: GoogleFonts.montserrat(
                           fontSize: 14, fontWeight: FontWeight.w500),
                     ),
@@ -148,7 +149,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                         maxLines: null,
                         keyboardType: TextInputType.multiline,
                         decoration: InputDecoration(
-                          hintText: 'Type your answer here.',
+                          hintText: StringConst.typeAns,
                           hintStyle: GoogleFonts.montserrat(
                               color: Colors.grey, fontWeight: FontWeight.w500),
                           border: const OutlineInputBorder(
@@ -160,7 +161,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                       height: 10,
                     ),
                     Text(
-                      'Would you recommend our app to others?',
+                      StringConst.youRecommend,
                       style: GoogleFonts.montserrat(
                           fontSize: 14, fontWeight: FontWeight.w500),
                     ),
@@ -182,7 +183,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                               },
                             ),
                             Text(
-                              'Yes, definitely!',
+                              StringConst.yesDefinitely,
                               style: GoogleFonts.montserrat(
                                   fontSize: 15, fontWeight: FontWeight.w500),
                             ),
@@ -201,7 +202,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                               },
                             ),
                             Text(
-                              'Maybe.',
+                              StringConst.mayBe,
                               style: GoogleFonts.montserrat(
                                   fontSize: 15, fontWeight: FontWeight.w500),
                             ),
@@ -220,7 +221,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                               },
                             ),
                             Text(
-                              'Not at the moment.',
+                              StringConst.notAtMoment,
                               style: GoogleFonts.montserrat(
                                   fontSize: 15, fontWeight: FontWeight.w500),
                             ),
@@ -234,7 +235,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                     Padding(
                       padding: const EdgeInsets.only(left: 12.0),
                       child: Text(
-                        'Thank you for your time!',
+                        StringConst.thankTime,
                         style: GoogleFonts.montserrat(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
@@ -264,15 +265,14 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                               children: [
                                 TextSpan(
                                   text:
-                                  "If you have any immediate concerns or\nquestions, "
-                                      "please don't hesitate to contact\nour support team ",
+                                  StringConst.immediateSupport,
                                   style: GoogleFonts.montserrat(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
                                 TextSpan(
-                                  text: 'here.',
+                                  text: StringConst.here,
                                   style: GoogleFonts.montserrat(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
@@ -301,7 +301,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>  ProfileScreen(),
+                    builder: (context) =>  const ProfileScreen(),
                   ),
                 );              },
               child: Center(
@@ -314,7 +314,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      'Submit',
+                      StringConst.submit,
                       style: GoogleFonts.montserrat(
                         fontWeight: FontWeight.w500,
                         color: Colors.white,

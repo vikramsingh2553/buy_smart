@@ -1,3 +1,4 @@
+import 'package:buy_smart/product/shared/string_const.dart';
 import 'package:flutter/material.dart';
 import 'package:buy_smart/product/provider/product_provider.dart';
 import 'package:buy_smart/cart/provider/cart_provider.dart';
@@ -17,7 +18,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Favorites'),
+        title: const Text(StringConst.favAppBar),
       ),
       body: Consumer<ProductProvider>(
         builder: (context, productProvider, child) {
@@ -62,7 +63,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                         MaterialPageRoute(builder: (context) => const CartScreen()),
                       );
                     },
-                    child: const Text('Add all to Cart'),
+                    child: const Text(StringConst.favAllCart),
                   ),
                 ),
               ],

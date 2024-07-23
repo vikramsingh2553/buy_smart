@@ -19,7 +19,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
+          SizedBox(
             height: height,
             width: width,
             child: Image.network(
@@ -59,7 +59,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  LoginScreen(),
+                          builder: (context) =>  const LoginScreen(),
                         ),
                       );
                     },

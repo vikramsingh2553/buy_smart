@@ -30,6 +30,9 @@ class StringConst {
   static const String startNavigationCart = 'Cart';
   static const String startNavigationFav = 'Favorite';
   static const String startNavigationAccount = 'Account';
+  static const String favAppBar = 'Favorites';
+  static const String favNoFound = 'No Favorites Found';
+  static const String favAllCart = ' Add all to Cart';
   static const String searchProducts = ' Search for products';
   static const String offer = 'Exclusive Offer';
   static const String selling = 'Best Selling';
@@ -50,9 +53,9 @@ class StringConst {
   static const String placeOrder = 'Place Order';
   static const String deliveryAddress = 'Delivery Address';
   static const String name = 'Name';
-  static const String enterName = 'Please enter your address';
+  static const String enterName = 'Please enter your Name';
   static const String address = 'Address';
-  static const String enterAddress = '';
+  static const String enterAddress = 'Please enter your address';
   static const String city = 'City';
   static const String enterCity = 'Please enter your city';
   static const String state = 'State';
@@ -84,4 +87,9 @@ class StringConst {
       "please don't hesitate to contact\nour support team ";
   static const String here = 'here';
   static const String submit = 'Submit';
+  static const String notifications = 'NOTIFICATIONS';
+  static const String allowNotification =  'Allow app to send you notifications about payments.';
+  static const String ensureNotification = 'Ensure that your app notifications are enabled to receive timely updates.';
+  static const String allowUpdate = 'Allow notifications about the app updates.';
+  static const String getUpdate = 'Get instant updates on latest features, improvements, and announcements.';
 }
