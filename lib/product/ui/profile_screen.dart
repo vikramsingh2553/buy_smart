@@ -1,3 +1,4 @@
+import 'package:buy_smart/product/shared/string_const.dart';
 import 'package:buy_smart/product/ui/delivery_address_screen.dart';
 import 'package:buy_smart/product/ui/feedback_screen.dart';
 import 'package:buy_smart/product/ui/notification_screen.dart';
@@ -37,7 +38,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: <Widget>[
               ListTile(
                 leading: const Icon(Icons.photo_library),
-                title: const Text('Gallery'),
+                title: const Text(StringConst.gallery),
                 onTap: () {
                   pickImage(ImageSource.gallery);
                   Navigator.of(context).pop();
@@ -45,7 +46,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               ListTile(
                 leading: const Icon(Icons.photo_camera),
-                title: const Text('Camera'),
+                title: const Text(StringConst.camera),
                 onTap: () {
                   pickImage(ImageSource.camera);
                   Navigator.of(context).pop();
@@ -63,7 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey.shade100,
-        title: const Text("My Profile"),
+        title: const Text(StringConst.myProfile),
         actions: const [
           Padding(
             padding: EdgeInsets.only(right: 16),
@@ -101,7 +102,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'abc',
+                        StringConst.abc,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -109,7 +110,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       SizedBox(height: 4),
                       Text(
-                        'xyz@gmail.com',
+                        StringConst.gmail,
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey,
@@ -121,8 +122,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               const SizedBox(height: 28),
               ListTile(
-                leading: Icon(Icons.shopping_bag),
-                title: const Text('My Orders'),
+                leading: const Icon(Icons.shopping_bag),
+                title: const Text(StringConst.myOrders),
                 trailing: const Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 14,
@@ -132,8 +133,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               Divider(color: Colors.grey.shade300),
               ListTile(
-                leading: Icon(Icons.account_box_outlined),
-                title: const Text('My Details'),
+                leading: const Icon(Icons.account_box_outlined),
+                title: const Text(StringConst.myDetails),
                 trailing: const Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 14,
@@ -142,8 +143,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Divider(color: Colors.grey.shade300),
               ListTile(
-                leading: Icon(Icons.location_on),
-                title: const Text('Delivery Address'),
+                leading: const Icon(Icons.location_on),
+                title: const Text(StringConst.deliveryAddress),
                 trailing: const Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 14,
@@ -152,15 +153,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>  DeliveryAddressScreen(),
+                      builder: (context) =>  const DeliveryAddressScreen(),
                     ),
                   );
                 },
               ),
               Divider(color: Colors.grey.shade300),
               ListTile(
-                leading: Icon(Icons.payment_outlined),
-                title: const Text('Payment Methods'),
+                leading: const Icon(Icons.payment_outlined),
+                title: const Text(StringConst.paymentMethod),
                 trailing: const Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 14,
@@ -169,25 +170,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>  PaymentScreen(),
-                    ),
-                  );
-                },
-              ),
-              Divider(color: Colors.grey.shade300),
-
-              ListTile(
-                leading: Icon(Icons.notifications_none),
-                title: const Text('Notification'),
-                trailing: const Icon(
-                  Icons.arrow_forward_ios_outlined,
-                  size: 14,
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>  NotificationScreen(),
+                      builder: (context) =>  const PaymentScreen(),
                     ),
                   );
                 },
@@ -195,8 +178,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Divider(color: Colors.grey.shade300),
 
               ListTile(
-                leading: Icon(Icons.settings),
-                title: const Text('Settings'),
+                leading: const Icon(Icons.notifications_none),
+                title: const Text(StringConst.notifications),
+                trailing: const Icon(
+                  Icons.arrow_forward_ios_outlined,
+                  size: 14,
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>  const NotificationScreen(),
+                    ),
+                  );
+                },
+              ),
+              Divider(color: Colors.grey.shade300),
+
+              ListTile(
+                leading: const Icon(Icons.settings),
+                title: const Text(StringConst.setting),
                 trailing: const Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 14,
@@ -212,8 +213,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Divider(color: Colors.grey.shade300),
               ListTile(
-                leading: Icon(Icons.feedback_outlined),
-                title: const Text('Feedback'),
+                leading: const Icon(Icons.feedback_outlined),
+                title: const Text(StringConst.feedback),
                 trailing: const Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 14,
@@ -230,8 +231,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Divider(color: Colors.grey.shade300),
 
               ListTile(
-                leading: Icon(Icons.help_outline),
-                title: const Text('Help'),
+                leading: const Icon(Icons.help_outline),
+                title: const Text(StringConst.help),
                 trailing: const Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 14,
@@ -241,8 +242,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Divider(color: Colors.grey.shade300),
               ListTile(
-                leading: Icon(Icons.info_outline),
-                title: const Text('About'),
+                leading: const Icon(Icons.info_outline),
+                title: const Text(StringConst.about),
                 trailing: const Icon(
                   Icons.arrow_forward_ios_outlined,
                   size: 14,

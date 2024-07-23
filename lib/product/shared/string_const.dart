@@ -117,4 +117,15 @@ class StringConst {
   static const String removeFavorite = 'Removed from favorites!';
   static const String addedCart = ' Added to cart!';
   static const String addCart = 'Add to cart';
+  static const String gallery = 'Gallery';
+  static const String camera = 'Camera';
+  static const String myProfile = 'My Profile';
+  static const String abc = 'abc';
+  static const String gmail = 'xyz@gmail.com';
+  static const String myOrders = 'My Orders';
+  static const String myDetails = 'My Details';
+  static const String setting = 'Settings';
+  static const String help = 'Help';
+  static const String about = 'About';
+
 }
