@@ -1,10 +1,9 @@
-import 'package:buy_smart/auth/model/user_model.dart';
+import 'package:buy_smart/auth/model/auth_model.dart';
 import 'package:buy_smart/auth/provider/auth_provider.dart';
 import 'package:buy_smart/auth/ui/register_screen.dart';
-import 'package:buy_smart/product/ui/home_screen.dart';
+import 'package:buy_smart/auth/ui/starting_home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -22,15 +21,15 @@ class _LoginScreenState extends State<LoginScreen> {
     final String password = passwordController.text;
 
     if (username.isNotEmpty && password.isNotEmpty) {
-      final user = UserModel(username: username, password: password);
+      final user = AuthModel(username: username, password: password);
       final userProvider = Provider.of<AuthProvider>(context, listen: false);
       final success = await userProvider.login(user);
 
-      if (success) {
+      if (success != null) {
         print('Login successful');
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
+          MaterialPageRoute(builder: (context) => StartingHomeScreen()),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -138,7 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           hintText: 'Enter your username',
                           border: OutlineInputBorder(),
                           contentPadding:
-                              EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -154,7 +153,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           hintText: 'Enter your password',
                           border: OutlineInputBorder(),
                           contentPadding:
-                              EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -162,29 +161,22 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: isLoading
                             ? const CircularProgressIndicator()
                             : ElevatedButton(
-                                onPressed:
-                                //login,
-                                    (){
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => HomeScreen()),
-                                  );
-                               },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.cyan,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 40, vertical: 16),
-                                  textStyle: const TextStyle(fontSize: 16),
-                                ),
-                                child: const Text(
-                                  'Login',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
+                          onPressed: login,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.cyan,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 40, vertical: 16),
+                            textStyle: const TextStyle(fontSize: 16),
+                          ),
+                          child: const Text(
+                            'Login',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                       ),
                       const SizedBox(height: 16),
                       Center(

@@ -1,4 +1,4 @@
-import 'package:buy_smart/auth/model/user_model.dart';
+import 'package:buy_smart/auth/model/auth_model.dart';
 import 'package:buy_smart/auth/provider/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +15,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
-      TextEditingController();
+  TextEditingController();
 
   void register() async {
     final String username = usernameController.text;
@@ -25,11 +25,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if (username.isNotEmpty &&
         password.isNotEmpty &&
         password == confirmPassword) {
-      final user = UserModel(username: username, password: password);
+      final user = AuthModel(username: username, password: password);
       final userProvider = Provider.of<AuthProvider>(context, listen: false);
       final success = await userProvider.register(user);
 
-      if (success) {
+      if (success != null) {
         print('Registration successful');
         Navigator.pushReplacement(
           context,
@@ -60,7 +60,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         elevation: 0,
         backgroundColor: Colors.white,
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [Colors.greenAccent, Colors.teal],
               begin: Alignment.topLeft,
@@ -69,9 +69,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
         ),
         title: Row(
-          children: [
-            const SizedBox(width: 8),
-            const Text(
+          children: const [
+            SizedBox(width: 8),
+            Text(
               'REGISTER TO BUY SMART',
               style: TextStyle(
                 fontSize: 16,
@@ -84,12 +84,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
         centerTitle: false,
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.info_outline,
               color: Colors.white,
             ),
-            onPressed: () {
-            },
+            onPressed: () {},
           ),
         ],
       ),
@@ -107,7 +106,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   shape: BoxShape.circle,
                   color: Colors.cyan[50],
                 ),
-                child: Center(
+                child: const Center(
                   child: Icon(
                     Icons.shopping_cart,
                     size: 60,
@@ -144,8 +143,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         decoration: const InputDecoration(
                           hintText: 'Enter your username',
                           border: OutlineInputBorder(),
-                          contentPadding:
-                              EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 8),
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -160,8 +159,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         decoration: const InputDecoration(
                           hintText: 'Enter your password',
                           border: OutlineInputBorder(),
-                          contentPadding:
-                              EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 8),
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -176,8 +175,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         decoration: const InputDecoration(
                           hintText: 'Confirm your password',
                           border: OutlineInputBorder(),
-                          contentPadding:
-                              EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 8),
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -185,32 +184,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         child: isLoading
                             ? const CircularProgressIndicator()
                             : ElevatedButton(
-                                onPressed: register,
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.cyan,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 40, vertical: 16),
-                                  textStyle: const TextStyle(fontSize: 16),
-                                ),
-                                child: const Text(
-                                  'Register',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
+                          onPressed: register,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.cyan,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 40, vertical: 16),
+                            textStyle: const TextStyle(fontSize: 16),
+                          ),
+                          child: const Text(
+                            'Register',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                       ),
                       const SizedBox(height: 16),
                       Center(
                         child: TextButton(
                           onPressed: () {
-                            // Navigate to login screen
-                            // Navigator.pushReplacement(
-                            //   context,
-                            //   MaterialPageRoute(builder: (context) => LoginScreen()),
-                            // );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const LoginScreen(),
+                              ),
+                            );
                           },
                           child: const Text(
                             'Already have an account? Login',
@@ -218,7 +218,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 16),
                       Center(
                         child: TextButton(
                           onPressed: () {},
