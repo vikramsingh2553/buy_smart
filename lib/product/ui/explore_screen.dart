@@ -1,3 +1,4 @@
+import 'package:buy_smart/product/shared/string_const.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:buy_smart/category/provider/category_provider.dart';
@@ -26,7 +27,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Find Products'),
+        title: const Text(StringConst.findProducts),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -36,7 +37,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
-              return Center(child: Text('Error: ${snapshot.error}'));
+              return Center(child: Text('${StringConst.error}: ${snapshot.error}'));
             } else {
               return Consumer<CategoryProvider>(
                 builder: (context, categoryProvider, child) {
@@ -49,7 +50,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                               borderRadius: BorderRadius.circular(16),
                               borderSide: const BorderSide(color: Colors.blueAccent),
                             ),
-                            hintText: 'Search Store',
+                            hintText: StringConst.searchStore,
                             prefixIcon: const Icon(Icons.search),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(16),

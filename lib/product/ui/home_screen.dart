@@ -1,4 +1,5 @@
 import 'package:buy_smart/auth/ui/favorites_screen.dart';
+import 'package:buy_smart/product/shared/string_const.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:buy_smart/product/model/product_model.dart';
@@ -29,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          'Buy Smart',
+          StringConst.splashBuy,
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
@@ -85,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     contentPadding: EdgeInsets.only(left: 86),
                     leading: Icon(Icons.location_on),
                     title: Text(
-                      'Welcome to Buy Smart',
+                      StringConst.welcomeText,
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.grey),
                     ),
@@ -100,26 +101,26 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       prefixIcon: const Icon(Icons.search),
-                      hintText: 'Search for products...',
+                      hintText: StringConst.searchProducts,
                     ),
                   ),
                   const SizedBox(height: 16),
                   const Text(
-                    'Exclusive Offer',
+                   StringConst.offer,
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),
                   _buildProductList(productProvider.products),
                   const SizedBox(height: 16),
                   const Text(
-                    'Best Selling',
+                    StringConst.selling,
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),
                   _buildProductList(productProvider.products),
                   const SizedBox(height: 16),
                   const Text(
-                    'Groceries',
+                    StringConst.groceries,
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),

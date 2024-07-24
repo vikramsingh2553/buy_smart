@@ -1,5 +1,6 @@
 import 'package:buy_smart/auth/ui/favorites_screen.dart';
 import 'package:buy_smart/cart/ui/cart_screen.dart';
+import 'package:buy_smart/product/shared/string_const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:buy_smart/product/model/product_model.dart';
@@ -82,12 +83,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         if (isFavorite) {
                           await productProvider.addToFavorites(widget.product);
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Added to favorites!')),
+                            const SnackBar(content: Text(StringConst.addFavorite)),
                           );
                         } else {
                         await productProvider.removeFromFavorites(widget.product);
                         ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Removed from favorites!')),
+                        const SnackBar(content: Text(StringConst.removeFavorite)),
 
                           );
                         }
@@ -113,10 +114,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               onPressed: () {
                 Provider.of<CartProvider>(context, listen: false).addToCart(widget.product);
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Added to cart!')),
+                  const SnackBar(content: Text(StringConst.addedCart)),
                 );
               },
-              child: const Text('Add to Cart'),
+              child: const Text(StringConst.addCart),
             ),
           ],
         ),

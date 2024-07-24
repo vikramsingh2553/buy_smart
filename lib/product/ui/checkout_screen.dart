@@ -1,3 +1,4 @@
+import 'package:buy_smart/product/shared/string_const.dart';
 import 'package:flutter/material.dart';
 
 class CheckoutScreen extends StatelessWidget {
@@ -30,42 +31,42 @@ class CheckoutScreen extends StatelessWidget {
                   ),
                 ),
                 const Text(
-                  'Checkout',
+                  StringConst.checkout,
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 16),
                 ListTile(
-                  title: const Text('Delivery'),
+                  title: const Text(StringConst.delivery),
                   trailing: TextButton(
                     onPressed: () {
                     },
-                    child: const Text('Select Method'),
+                    child: const Text(StringConst.selectMethod),
                   ),
                 ),
                 ListTile(
-                  title: const Text('Payment'),
+                  title: const Text(StringConst.payment),
                   trailing: TextButton(
                     onPressed: () {
 
                     },
-                    child: const Text('Select Payment'),
+                    child: const Text(StringConst.selectPayment),
                   ),
                 ),
                 ListTile(
-                  title: const Text('Promo Code'),
+                  title: const Text(StringConst.promoCode),
                   trailing: TextButton(
                     onPressed: () {
                     },
-                    child: const Text('Pick Discount'),
+                    child: const Text(StringConst.pickDiscount),
                   ),
                 ),
                 ListTile(
-                  title: const Text('Total Cost'),
+                  title: const Text(StringConst.totalCost),
                   trailing: Text('\$$totalCost'),
                 ),
                 const SizedBox(height: 16),
                 const Text(
-                  'Place an order you agree to our Terms and Conditions',
+                  StringConst.payTerms,
                   style: TextStyle(fontSize: 12, color: Colors.grey),
                 ),
                 const SizedBox(height: 16),
@@ -74,7 +75,7 @@ class CheckoutScreen extends StatelessWidget {
                     onPressed: () {
 
                     },
-                    child: const Text('Place Order'),
+                    child: const Text(StringConst.placeOrder),
                   ),
                 ),
               ],
