@@ -140,4 +140,14 @@ class StringConst {
   static const String passChangeSuccess = 'Password changed successfully!';
   static const String passNotMatch = 'Passwords do not match!';
   static const String savePass = 'Save Password';
+  static const String orderDone = 'Order Done';
+  static const String orderPlace = 'Order Placed Successfully!';
+  static const String choose =  'Thank you for choosing us. Your order will be processed soon.';
+  static const String orderID = 'Order ID:';
+  static const String ord = 'ORD123456';
+  static const String orderDateText = 'Order Date:';
+  static const String orderDate = '2022-12-25';
+  static const String orderPrice = '₹ 1,500.00';
+  static const String shareWhats = 'Share your order on WhatsApp';
+  static const String backHome = 'Back to Home';
 }

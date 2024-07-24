@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.cyan,
         ),
-        home: isLoggedIn ? StartingHomeScreen() : LoginScreen(),
+        home: StartingHomeScreen(),
       ),
     );
   }
