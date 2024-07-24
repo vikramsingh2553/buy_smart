@@ -1,9 +1,7 @@
-import 'package:buy_smart/product/shared/string_const.dart';
+import 'package:buy_smart/auth/model/auth_model.dart';
+import 'package:buy_smart/auth/provider/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../model/user_model.dart';
-import '../provider/auth_provider.dart';
 import 'login_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -17,7 +15,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
-      TextEditingController();
+  TextEditingController();
 
   void register() async {
     final String username = usernameController.text;
@@ -27,27 +25,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if (username.isNotEmpty &&
         password.isNotEmpty &&
         password == confirmPassword) {
-      final user = UserModel(username: username, password: password);
+      final user = AuthModel(username: username, password: password);
       final userProvider = Provider.of<AuthProvider>(context, listen: false);
       final success = await userProvider.register(user);
 
-      if (success) {
+      if (success != null) {
+        print('Registration successful');
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const LoginScreen()),
+          MaterialPageRoute(builder: (context) => LoginScreen()),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text(StringConst.registerFailSnack)),
+          const SnackBar(content: Text('Registration failed')),
         );
       }
     } else if (password != confirmPassword) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text(StringConst.registerPassNotMatch)),
+        const SnackBar(content: Text('Passwords do not match')),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text(StringConst.registerWarnSnack)),
+        const SnackBar(content: Text('Please fill out all fields')),
       );
     }
   }
@@ -69,11 +68,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
           ),
         ),
-        title: const Row(
-          children: [
+        title: Row(
+          children: const [
             SizedBox(width: 8),
             Text(
-              StringConst.registerBuy,
+              'REGISTER TO BUY SMART',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -89,9 +88,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               Icons.info_outline,
               color: Colors.white,
             ),
-            onPressed: () {
-
-            },
+            onPressed: () {},
           ),
         ],
       ),
@@ -129,7 +126,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       const Text(
-                        StringConst.createAccount,
+                        'Create Your Account',
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
@@ -137,22 +134,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 16),
                       const Text(
-                        StringConst.username,
+                        'Username',
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       TextField(
                         controller: usernameController,
                         decoration: const InputDecoration(
-                          hintText: StringConst.userHint,
+                          hintText: 'Enter your username',
                           border: OutlineInputBorder(),
-                          contentPadding:
-                              EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 8),
                         ),
                       ),
                       const SizedBox(height: 16),
                       const Text(
-                        StringConst.password,
+                        'Password',
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
@@ -160,15 +157,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         controller: passwordController,
                         obscureText: true,
                         decoration: const InputDecoration(
-                          hintText: StringConst.passHint,
+                          hintText: 'Enter your password',
                           border: OutlineInputBorder(),
-                          contentPadding:
-                              EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 8),
                         ),
                       ),
                       const SizedBox(height: 16),
                       const Text(
-                        StringConst.confirmPass,
+                        'Confirm Password',
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
@@ -176,10 +173,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         controller: confirmPasswordController,
                         obscureText: true,
                         decoration: const InputDecoration(
-                          hintText: StringConst.confirmPassHint,
+                          hintText: 'Confirm your password',
                           border: OutlineInputBorder(),
-                          contentPadding:
-                              EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 8),
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -187,45 +184,45 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         child: isLoading
                             ? const CircularProgressIndicator()
                             : ElevatedButton(
-                                onPressed: register,
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.cyan,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 40, vertical: 16),
-                                  textStyle: const TextStyle(fontSize: 16),
-                                ),
-                                child: const Text(
-                                  StringConst.register,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                      ),
-                      const SizedBox(height: 16),
-                      Center(
-                        child: TextButton(
-                          onPressed: () {
-                            // Navigate to login screen
-                            // Navigator.pushReplacement(
-                            //   context,
-                            //   MaterialPageRoute(builder: (context) => LoginScreen()),
-                            // );
-                          },
+                          onPressed: register,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.cyan,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 40, vertical: 16),
+                            textStyle: const TextStyle(fontSize: 16),
+                          ),
                           child: const Text(
-                            StringConst.alreadyAccount,
-                            style: TextStyle(color: Colors.cyan, fontSize: 16),
+                            'Register',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
                       const SizedBox(height: 16),
                       Center(
                         child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const LoginScreen(),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            'Already have an account? Login',
+                            style: TextStyle(color: Colors.cyan, fontSize: 16),
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: TextButton(
                           onPressed: () {},
                           child: const Text(
-                            StringConst.forgot,
+                            'Forgot Password?',
                             style: TextStyle(color: Colors.cyan, fontSize: 16),
                           ),
                         ),

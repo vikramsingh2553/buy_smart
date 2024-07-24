@@ -1,12 +1,9 @@
+import 'package:buy_smart/auth/model/auth_model.dart';
+import 'package:buy_smart/auth/provider/auth_provider.dart';
 import 'package:buy_smart/auth/ui/register_screen.dart';
 import 'package:buy_smart/auth/ui/starting_home_screen.dart';
-import 'package:buy_smart/product/shared/string_const.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../../product/ui/home_screen.dart';
-import '../model/user_model.dart';
-import '../provider/auth_provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -24,24 +21,25 @@ class _LoginScreenState extends State<LoginScreen> {
     final String password = passwordController.text;
 
     if (username.isNotEmpty && password.isNotEmpty) {
-      final user = UserModel(username: username, password: password);
+      final user = AuthModel(username: username, password: password);
       final userProvider = Provider.of<AuthProvider>(context, listen: false);
       final success = await userProvider.login(user);
 
-      if (success) {
+      if (success != null) {
+        print('Login successful');
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
+          MaterialPageRoute(builder: (context) => StartingHomeScreen()),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text(StringConst.loginFailSnack)),
+          const SnackBar(content: Text('Login failed')),
         );
       }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-            content: Text(StringConst.loginWarnSnack)),
+            content: Text('Please enter both username and password')),
       );
     }
   }
@@ -55,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
         elevation: 0,
         backgroundColor: Colors.white,
         flexibleSpace: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [Colors.greenAccent, Colors.teal],
               begin: Alignment.topLeft,
@@ -63,11 +61,11 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
         ),
-        title: const Row(
+        title: Row(
           children: [
-            SizedBox(width: 8),
-            Text(
-              StringConst.loginBuy,
+            const SizedBox(width: 8),
+            const Text(
+              'LOGIN TO BUY SMART',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -79,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
         centerTitle: false,
         actions: [
           IconButton(
-            icon: const Icon(
+            icon: Icon(
               Icons.info_outline,
               color: Colors.white,
             ),
@@ -101,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   shape: BoxShape.circle,
                   color: Colors.cyan[50],
                 ),
-                child: const Center(
+                child: Center(
                   child: Icon(
                     Icons.shopping_cart,
                     size: 60,
@@ -121,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       const Text(
-                        StringConst.loginAccount,
+                        'Login to Your Account',
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
@@ -129,22 +127,22 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       const SizedBox(height: 16),
                       const Text(
-                        StringConst.username,
+                        'Username',
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       TextField(
                         controller: usernameController,
                         decoration: const InputDecoration(
-                          hintText: StringConst.userHint,
+                          hintText: 'Enter your username',
                           border: OutlineInputBorder(),
                           contentPadding:
-                              EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         ),
                       ),
                       const SizedBox(height: 16),
                       const Text(
-                        StringConst.password,
+                        'Password',
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
@@ -152,10 +150,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         controller: passwordController,
                         obscureText: true,
                         decoration: const InputDecoration(
-                          hintText: StringConst.passHint,
+                          hintText: 'Enter your password',
                           border: OutlineInputBorder(),
                           contentPadding:
-                              EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -163,29 +161,22 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: isLoading
                             ? const CircularProgressIndicator()
                             : ElevatedButton(
-                                onPressed:
-                                //login,
-                                    (){
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => const StartingHomeScreen()),
-                                  );
-                               },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.cyan,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 40, vertical: 16),
-                                  textStyle: const TextStyle(fontSize: 16),
-                                ),
-                                child: const Text(
-                                  StringConst.login,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
+                          onPressed: login,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.cyan,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 40, vertical: 16),
+                            textStyle: const TextStyle(fontSize: 16),
+                          ),
+                          child: const Text(
+                            'Login',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                       ),
                       const SizedBox(height: 16),
                       Center(
@@ -194,11 +185,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const RegisterScreen(),
+                                  builder: (context) => RegisterScreen(),
                                 ));
                           },
                           child: const Text(
-                            StringConst.noAccount,
+                            "Don't have an account? Register",
                             style: TextStyle(color: Colors.cyan, fontSize: 16),
                           ),
                         ),

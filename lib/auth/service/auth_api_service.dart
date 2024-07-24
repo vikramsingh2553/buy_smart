@@ -1,28 +1,41 @@
+
+import 'dart:convert';
+import 'package:buy_smart/auth/model/auth_model.dart';
+import 'package:buy_smart/product/shared/api_endpoints.dart';
 import 'package:http/http.dart' as http;
 
-import '../../product/shared/api_endpoints.dart';
-import '../model/user_model.dart';
-
 class AuthApiService {
-  Future<bool> register(UserModel user) async {
-    final url = Uri.parse('${ApiEndpoints}/register');
-    final response = await http.post(url);
 
+  Future<Map<String, dynamic>?> login(AuthModel user) async {
+    final response = await http.post(
+      Uri.parse('$ApiEndpoints/login'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(user.toMap()),
+    );
     if (response.statusCode == 200) {
-      return true;
+      return jsonDecode(response.body);
     } else {
-      return false;
+      print('Failed to login: ${response.statusCode}');
+      return null;
     }
   }
 
-  Future<bool> login(UserModel user) async {
-    final url = Uri.parse('${ApiEndpoints}/login');
-    final response = await http.post(url);
+  Future<Map<String, dynamic>?> register(AuthModel user) async {
+    final response = await http.post(
+      Uri.parse('$ApiEndpoints/register'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(user.toMap()),
+    );
 
     if (response.statusCode == 200) {
-      return true;
+      return jsonDecode(response.body);
     } else {
-      return false;
+      print('Failed to register: ${response.statusCode}');
+      return null;
     }
   }
 }

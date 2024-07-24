@@ -1,7 +1,8 @@
+import 'package:buy_smart/auth/model/auth_model.dart';
+import 'package:buy_smart/auth/service/auth_api_service.dart';
 import 'package:flutter/material.dart';
 
-import '../model/user_model.dart';
-import '../service/auth_api_service.dart';
+
 
 class AuthProvider extends ChangeNotifier {
   final AuthApiService _userService = AuthApiService();
@@ -9,14 +10,14 @@ class AuthProvider extends ChangeNotifier {
 
   bool get isLoading => _isLoading;
 
-  Future<bool> register(UserModel user) async {
+  Future<Map<String, dynamic>?> register(AuthModel user) async {
     _setLoading(true);
     final success = await _userService.register(user);
     _setLoading(false);
     return success;
   }
 
-  Future<bool> login(UserModel user) async {
+  Future<Map<String, dynamic>?> login(AuthModel user) async {
     _setLoading(true);
     final success = await _userService.login(user);
     _setLoading(false);
