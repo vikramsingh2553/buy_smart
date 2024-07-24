@@ -1,3 +1,4 @@
+import 'package:buy_smart/product/shared/string_const.dart';
 import 'package:flutter/material.dart';
 
 class OrderDoneScreen extends StatefulWidget {
@@ -12,7 +13,7 @@ class _OrderDoneScreenState extends State<OrderDoneScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Order Done'),
+        title: const Text(StringConst.orderDone),
         centerTitle: true,
       ),
       body: Padding(
@@ -27,8 +28,8 @@ class _OrderDoneScreenState extends State<OrderDoneScreen> {
                 color: Colors.green,
               ),
               const SizedBox(height: 20),
-              Text(
-                'Order Placed Successfully!',
+              const Text(
+                StringConst.orderPlace,
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -37,7 +38,7 @@ class _OrderDoneScreenState extends State<OrderDoneScreen> {
               ),
               const SizedBox(height: 10),
               Text(
-                'Thank you for choosing us. Your order will be processed soon.',
+                StringConst.choose,
                 style: TextStyle(
                   fontSize: 18,
                   color: Colors.grey[600],
@@ -54,14 +55,14 @@ class _OrderDoneScreenState extends State<OrderDoneScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
-                            'Order ID:',
+                            StringConst.orderID,
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.grey[600],
                             ),
                           ),
                           Text(
-                            'ORD123456',
+                            StringConst.ord,
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.grey[800],
@@ -74,14 +75,14 @@ class _OrderDoneScreenState extends State<OrderDoneScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
-                            'Order Date:',
+                            StringConst.orderDateText,
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.grey[600],
                             ),
                           ),
                           Text(
-                            '2022-12-25',
+                            StringConst.orderDate,
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.grey[800],
@@ -94,14 +95,14 @@ class _OrderDoneScreenState extends State<OrderDoneScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
-                            'Total Amount:',
+                            StringConst.totalAmount,
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.grey[600],
                             ),
                           ),
                           Text(
-                            '₹ 1,500.00',
+                            StringConst.orderPrice,
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.grey[800],
@@ -130,7 +131,7 @@ class _OrderDoneScreenState extends State<OrderDoneScreen> {
                     ),
                     const SizedBox(width: 10),
                     Text(
-                      'Share your order on WhatsApp',
+                      StringConst.shareWhats,
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.grey[600],
@@ -144,7 +145,6 @@ class _OrderDoneScreenState extends State<OrderDoneScreen> {
                 onPressed: () {
                   Navigator.pushNamed(context,'');
                 },
-                child: const Text('Back to Home'),
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.green,
@@ -153,6 +153,7 @@ class _OrderDoneScreenState extends State<OrderDoneScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
+                child: const Text(StringConst.backHome),
               ),
             ],
           ),
