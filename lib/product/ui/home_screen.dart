@@ -120,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   _buildProductList(productProvider.products),
                   const SizedBox(height: 16),
                   const Text(
-                    StringConst.groceries,
+                    StringConst.products,
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),
