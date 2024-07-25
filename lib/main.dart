@@ -1,4 +1,3 @@
-import 'package:buy_smart/auth/ui/login_screen.dart';
 import 'package:buy_smart/auth/ui/starting_home_screen.dart';
 import 'package:buy_smart/cart/provider/cart_provider.dart';
 import 'package:buy_smart/category/provider/category_provider.dart';
@@ -19,7 +18,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   final bool isLoggedIn;
 
-  MyApp({required this.isLoggedIn});
+  const MyApp({super.key, required this.isLoggedIn});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +34,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.cyan,
         ),
-        home: StartingHomeScreen(),
+        home: const StartingHomeScreen(),
       ),
     );
   }
