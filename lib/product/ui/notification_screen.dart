@@ -1,8 +1,9 @@
+import 'package:buy_smart/product/shared/string_const.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NotificationScreen extends StatefulWidget {
-  NotificationScreen({super.key});
+  const NotificationScreen({super.key});
 
   @override
   State<NotificationScreen> createState() => _NotificationScreenState();
@@ -25,13 +26,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
               Column(
                 children: [
                   Text(
-                    'NOTIFICATIONS',
+                    StringConst.notifications,
                     style: GoogleFonts.montserrat(
                       fontWeight: FontWeight.w600,
                       fontSize: 15,
                     ),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(
                       right: 70.0,
                     ),
@@ -46,7 +47,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Column(
@@ -57,7 +58,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       SizedBox(
                         width: 260,
                         child: Text(
-                          'Allow app to send you notifications about payments.',
+                          StringConst.allowNotification,
                           style: GoogleFonts.montserrat(
                             fontSize: 15,
                             fontWeight: FontWeight.w600,
@@ -75,20 +76,20 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             Colors.grey.shade300),
                         thumbColor: MaterialStateProperty.resolveWith((states) {
                           if (states.contains(MaterialState.selected)) {
-                            return Color(0xff5351C7);
+                            return const Color(0xff5351C7);
                           }
                           return Colors.grey;
                         }),
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   SizedBox(
                     width: 290,
                     child: Text(
-                      'Ensure that your app notifications are enabled to receive timely updates.',
+                     StringConst.ensureNotification,
                       style: GoogleFonts.montserrat(
                           fontSize: 13,
                           fontWeight: FontWeight.w600,
@@ -97,7 +98,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Column(
@@ -108,7 +109,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       SizedBox(
                         width: 260,
                         child: Text(
-                          'Allow notifications about the app updates.',
+                         StringConst.allowUpdate,
                           style: GoogleFonts.montserrat(
                             fontSize: 15,
                             fontWeight: FontWeight.w600,
@@ -126,20 +127,20 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             Colors.grey.shade300),
                         thumbColor: MaterialStateProperty.resolveWith((states) {
                           if (states.contains(MaterialState.selected)) {
-                            return Color(0xff5351C7);
+                            return const Color(0xff5351C7);
                           }
                           return Colors.grey;
                         }),
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   SizedBox(
                     width: 290,
                     child: Text(
-                      'Get instant updates on latest features, improvements, and announcements.',
+                      StringConst.getUpdate,
                       style: GoogleFonts.montserrat(
                           fontSize: 13,
                           fontWeight: FontWeight.w600,

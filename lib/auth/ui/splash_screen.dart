@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:buy_smart/auth/ui/welcome_screen.dart';
+import 'package:buy_smart/product/shared/string_const.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -18,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement(
           context,
       MaterialPageRoute(
-        builder: (context) => WelcomeScreen(),
+        builder: (context) => const WelcomeScreen(),
       )
       );
     });
@@ -40,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
               SizedBox(height: 10),
               Text(
-                'Buy Smart',
+                StringConst.splashBuy,
                 style: TextStyle(
                   fontSize: 34,
                   fontWeight: FontWeight.bold,
@@ -48,7 +49,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ),
               Text(
-                'online Shopping',
+                StringConst.splashOnShop,
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.white,
