@@ -1,14 +1,13 @@
-
 import 'dart:convert';
 import 'package:buy_smart/auth/model/auth_model.dart';
-import 'package:buy_smart/product/shared/api_endpoints.dart';
 import 'package:http/http.dart' as http;
 
 class AuthApiService {
+  final String baseUrl = 'http://localhost:3000/api';
 
   Future<Map<String, dynamic>?> login(AuthModel user) async {
     final response = await http.post(
-      Uri.parse('$ApiEndpoints/login'),
+      Uri.parse('$baseUrl/login'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -24,7 +23,7 @@ class AuthApiService {
 
   Future<Map<String, dynamic>?> register(AuthModel user) async {
     final response = await http.post(
-      Uri.parse('$ApiEndpoints/register'),
+      Uri.parse('$baseUrl/register'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
