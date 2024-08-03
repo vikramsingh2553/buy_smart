@@ -1,41 +1,59 @@
 import 'package:buy_smart/auth/ui/starting_home_screen.dart';
-import 'package:buy_smart/cart/provider/cart_provider.dart';
 import 'package:buy_smart/category/provider/category_provider.dart';
 import 'package:buy_smart/product/provider/product_provider.dart';
+import 'package:buy_smart/product/ui/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'auth/provider/auth_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
-
-  runApp(MyApp(isLoggedIn: isLoggedIn));
+void main() {
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final bool isLoggedIn;
-
-  const MyApp({super.key, required this.isLoggedIn});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => AuthProvider()),
-        ChangeNotifierProvider(create: (_) => ProductProvider()),
-        ChangeNotifierProvider(create: (_) => CartProvider()),
-        ChangeNotifierProvider(create: (_) => CategoryProvider()),
+        ChangeNotifierProvider(create: (context) {
+          return ProductProvider();
+        }),
+        ChangeNotifierProvider(create: (context) {
+          return CategoryProvider();
+        }),
       ],
       child: MaterialApp(
-        title: 'Buy Smart',
+        title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.cyan,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
         ),
-        home: const StartingHomeScreen(),
+        home: FutureBuilder(
+          future: _checkFirstLogin(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator();
+            } else {
+              bool isFirstLogin = snapshot.data ?? true;
+              return isFirstLogin ? StartingHomeScreen() : HomeScreen();
+            }
+          },
+        ),
+        debugShowCheckedModeBanner: false,
       ),
     );
+  }
+
+  Future<bool> _checkFirstLogin() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isFirstLogin = prefs.getBool('isFirstLogin') ?? true;
+
+    if (isFirstLogin) {
+      await prefs.setBool('isFirstLogin', false);
+    }
+
+    return isFirstLogin;
   }
 }
