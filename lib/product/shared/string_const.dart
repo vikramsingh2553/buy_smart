@@ -2,7 +2,7 @@ class StringConst {
   static const String splashBuy = 'Buy Smart';
   static const String splashOnShop = 'Online Shopping';
   static const String welcomeText = 'Welcome To Buy Smart';
-  static const String welcomeDesc = 'Get your groceries in as fast as one hour';
+  static const String welcomeDesc = 'Get your Products in as fast';
   static const String welcomeStartButton = 'Get Started';
   static const String loginFailSnack = 'Login Failed';
   static const String loginWarnSnack =
@@ -36,7 +36,7 @@ class StringConst {
   static const String searchProducts = ' Search for products';
   static const String offer = 'Exclusive Offer';
   static const String selling = 'Best Selling';
-  static const String groceries = 'Groceries';
+  static const String products = 'Products';
   static const String findProducts = 'Find Products';
   static const String error = ' Error';
   static const String searchStore = 'Search Store';
